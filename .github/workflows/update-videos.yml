@@ -1,0 +1,58 @@
+name: 영상 자동 업데이트
+
+on:
+  schedule:
+    # 매일 한국시간 오전 9시 (UTC 00:00)
+    - cron: '0 0 * * *'
+  workflow_dispatch: # 수동 실행 가능
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: 영상 목록 업데이트
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+        run: node scripts/update-videos.mjs
+
+      - name: 변경 확인 및 커밋
+        id: check
+        run: |
+          if git diff --quiet videos.js; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+            echo "변경 없음"
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add videos.js
+            git commit -m "자동 업데이트: 새 영상 추가 $(date +%Y-%m-%d)"
+            git push
+            echo "videos.js 업데이트 완료"
+          fi
+
+      - name: 알림 이슈 생성
+        if: steps.check.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          # update-videos.mjs가 생성한 리포트 파일 읽기
+          if [ -f scripts/update-report.md ]; then
+            BODY=$(cat scripts/update-report.md)
+          else
+            BODY="videos.js가 업데이트되었습니다. 상세 내용은 커밋을 확인하세요."
+          fi
+          gh issue create \
+            --title "📢 새 영상 업데이트 $(date +%Y-%m-%d)" \
+            --body "$BODY" \
+            --label "자동업데이트"

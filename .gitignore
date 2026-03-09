@@ -11,6 +11,9 @@ Tasks.md
 TaskExecution.md
 CLAUDE.md
 
+# 임시 리포트 (GitHub Actions에서 생성)
+scripts/update-report.md
+
 # 시스템
 .DS_Store
 Thumbs.db
