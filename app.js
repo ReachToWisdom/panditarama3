@@ -222,6 +222,16 @@ function renderResume() {
 function renderCategories() {
   const container = document.getElementById('category-list');
   container.innerHTML = '';
+
+  const preset = userData.settings.preset || 'count';
+  const presetData = CATEGORY_PRESETS[preset];
+
+  // 최신순: 카테고리 무시, 전체 영상을 날짜 역순으로 표시
+  if (presetData && presetData.sortByDate) {
+    renderLatestView(container);
+    return;
+  }
+
   const catOrder = getCategoryOrder();
 
   for (const cat of catOrder) {
@@ -261,6 +271,36 @@ function renderCategories() {
   }
 }
 
+/** 최신순 뷰: 카테고리 없이 날짜별로 전체 영상 표시 */
+function renderLatestView(container) {
+  const filtered = getFilteredVideos(VIDEOS);
+  const sorted = [...filtered].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  if (sorted.length === 0) return;
+
+  // 날짜별 그룹핑
+  let currentDate = '';
+  let currentBody = null;
+
+  for (const v of sorted) {
+    const dateLabel = v.date || '날짜 없음';
+    if (dateLabel !== currentDate) {
+      currentDate = dateLabel;
+      const catEl = document.createElement('div');
+      catEl.className = 'category open';
+      catEl.innerHTML = `
+        <div class="category-header date-header" data-cat="date-${dateLabel}">
+          <span class="category-name">${dateLabel}</span>
+          <span class="category-count" style="font-size:11px;color:var(--text-muted)">${v.category}</span>
+        </div>
+        <div class="category-body"></div>
+      `;
+      currentBody = catEl.querySelector('.category-body');
+      container.appendChild(catEl);
+    }
+    currentBody.appendChild(createVideoItem(v));
+  }
+}
+
 function createVideoItem(v) {
   const isWatched = !!userData.watched[v.id];
   const isStarred = userData.starred.includes(v.id);
@@ -268,17 +308,19 @@ function createVideoItem(v) {
   const hasRepeat = userData.repeat[v.id] && userData.repeat[v.id].mode !== 'off';
   const playCount = userData.playCount[v.id] || 0;
 
+  const isOpened = playCount > 0 && !isWatched; // 열어봤지만 완료 아님
+
   const el = document.createElement('div');
-  el.className = `video-item${isWatched ? ' watched' : ''}`;
+  el.className = `video-item${isWatched ? ' watched' : ''}${isOpened ? ' opened' : ''}`;
   el.dataset.id = v.id;
   el.innerHTML = `
     <div class="video-check" data-action="toggle-watch" title="시청 완료 표시">${isWatched ? '✓' : ''}</div>
-    ${playCount > 0 ? `<span class="play-count" title="재생 ${playCount}회">${playCount}</span>` : ''}
+    <span class="play-count${playCount > 0 ? '' : ' empty'}" title="재생 ${playCount}회">${playCount > 0 ? playCount : ''}</span>
     <div class="video-info">
       <div class="video-title" data-action="play">${v.title}</div>
       <div class="video-meta">
         <span>${v.duration || ''}</span>
-        ${isWatched ? '<span style="color:var(--checked)">시청완료</span>' : ''}
+        ${isWatched ? '<span style="color:var(--checked)">시청완료</span>' : (isOpened ? '<span style="color:var(--accent)">시청중</span>' : '')}
       </div>
       <div class="note-area" id="note-${v.id}">
         <textarea placeholder="메모 입력..." data-action="note">${userData.notes[v.id] || ''}</textarea>
@@ -913,6 +955,7 @@ function init() {
 
   // ── 이벤트 바인딩 ──
 
+  document.getElementById('btn-share').addEventListener('click', shareApp);
   document.getElementById('btn-theme').addEventListener('click', toggleTheme);
 
   document.getElementById('btn-settings').addEventListener('click', () => {
@@ -1011,6 +1054,24 @@ function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closePlayer(); document.getElementById('settings-overlay').classList.remove('open'); }
   });
+}
+
+// ── 공유 ──
+
+function shareApp() {
+  const url = 'https://reachtowisdom.github.io/panditarama3/';
+  const text = '빤디따라마 법문 영상 플레이리스트';
+  if (navigator.share) {
+    navigator.share({ title: text, url: url }).catch(() => {});
+  } else {
+    // 클립보드 복사 폴백
+    navigator.clipboard.writeText(url).then(() => {
+      showToast('링크가 복사되었습니다');
+    }).catch(() => {
+      // 폴백: 수동 복사
+      prompt('링크를 복사하세요:', url);
+    });
+  }
 }
 
 // ── PWA 설치 배너 ──

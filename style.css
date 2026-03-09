@@ -277,6 +277,7 @@ body {
 [data-theme="dark"] .video-item:hover { background: rgba(255,255,255,0.03); }
 
 .video-item.watched { opacity: 0.6; }
+.video-item.opened { border-left: 3px solid var(--accent); }
 
 /* 체크박스 */
 .video-check {
@@ -727,6 +728,21 @@ body {
   padding: 0 4px;
   flex-shrink: 0;
   margin-top: 4px;
+}
+
+.play-count.empty {
+  background: transparent;
+  min-width: 16px;
+}
+
+/* 날짜 헤더 (최신순) */
+.date-header {
+  cursor: default;
+}
+
+.date-header .category-name {
+  font-weight: 600;
+  color: var(--accent);
 }
 
 /* 설치 배너 */
