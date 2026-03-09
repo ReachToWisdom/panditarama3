@@ -176,9 +176,13 @@ function sortVideos(videos) {
   const preset = userData.settings.preset || 'count';
   const presetData = CATEGORY_PRESETS[preset];
 
-  // 최신순 프리셋: 날짜 역순 (최신이 위)
+  // 날짜순 프리셋: 등록순(asc) 또는 최신순(desc)
   if (presetData && presetData.sortByDate) {
-    sorted.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    if (presetData.sortByDate === 'asc') {
+      sorted.sort((a, b) => (a.date || '').localeCompare(b.date || ''));
+    } else {
+      sorted.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    }
     return sorted;
   }
 
@@ -226,9 +230,9 @@ function renderCategories() {
   const preset = userData.settings.preset || 'count';
   const presetData = CATEGORY_PRESETS[preset];
 
-  // 최신순: 카테고리 무시, 전체 영상을 날짜 역순으로 표시
+  // 날짜순: 카테고리 무시, 전체 영상을 날짜순으로 표시
   if (presetData && presetData.sortByDate) {
-    renderLatestView(container);
+    renderDateView(container, presetData.sortByDate);
     return;
   }
 
@@ -271,10 +275,12 @@ function renderCategories() {
   }
 }
 
-/** 최신순 뷰: 카테고리 없이 날짜별로 전체 영상 표시 */
-function renderLatestView(container) {
+/** 날짜순 뷰: 카테고리 없이 날짜별로 전체 영상 표시 */
+function renderDateView(container, direction) {
   const filtered = getFilteredVideos(VIDEOS);
-  const sorted = [...filtered].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  const sorted = direction === 'asc'
+    ? [...filtered].sort((a, b) => (a.date || '').localeCompare(b.date || ''))
+    : [...filtered].sort((a, b) => (b.date || '').localeCompare(a.date || ''));
   if (sorted.length === 0) return;
 
   // 날짜별 그룹핑
@@ -1017,6 +1023,7 @@ function init() {
       showToast('시청 완료 표시됨');
     }
   });
+  document.getElementById('btn-lock').addEventListener('click', lockScreen);
   document.getElementById('btn-close-player').addEventListener('click', closePlayer);
 
   // 모달 외부 클릭
@@ -1049,11 +1056,55 @@ function init() {
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(() => {});
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
   initInstallBanner();
+  initLockScreen();
 
   // ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closePlayer(); document.getElementById('settings-overlay').classList.remove('open'); }
   });
+}
+
+// ── 화면 잠금 (주머니 모드) ──
+
+let lockTimer = null;
+const UNLOCK_HOLD_MS = 2000; // 2초 길게 눌러야 해제
+
+function lockScreen() {
+  document.getElementById('lock-overlay').classList.remove('hidden');
+  showToast('화면 잠금 — 해제: 2초 길게 누르기');
+}
+
+function initLockScreen() {
+  const overlay = document.getElementById('lock-overlay');
+  const progress = document.getElementById('lock-progress');
+
+  function onStart(e) {
+    e.preventDefault();
+    lockTimer = setTimeout(() => {
+      overlay.classList.add('hidden');
+      progress.style.width = '0%';
+      showToast('잠금 해제');
+    }, UNLOCK_HOLD_MS);
+    // 프로그레스 애니메이션
+    progress.style.transition = `width ${UNLOCK_HOLD_MS}ms linear`;
+    progress.style.width = '100%';
+  }
+
+  function onEnd() {
+    clearTimeout(lockTimer);
+    progress.style.transition = 'none';
+    progress.style.width = '0%';
+  }
+
+  overlay.addEventListener('touchstart', onStart, { passive: false });
+  overlay.addEventListener('touchend', onEnd);
+  overlay.addEventListener('touchcancel', onEnd);
+  overlay.addEventListener('mousedown', onStart);
+  overlay.addEventListener('mouseup', onEnd);
+  overlay.addEventListener('mouseleave', onEnd);
+
+  // 잠금 중 모든 터치 차단
+  overlay.addEventListener('click', (e) => e.stopPropagation());
 }
 
 // ── 공유 ──

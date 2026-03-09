@@ -735,6 +735,51 @@ body {
   min-width: 16px;
 }
 
+/* 화면 잠금 (주머니 모드) */
+.lock-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.95);
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: none;
+}
+
+.lock-content {
+  text-align: center;
+  color: white;
+}
+
+.lock-icon {
+  font-size: 64px;
+  margin-bottom: 16px;
+}
+
+.lock-text {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.lock-hint {
+  font-size: 14px;
+  color: #999;
+  margin-bottom: 24px;
+}
+
+.lock-progress {
+  width: 0%;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 2px;
+  margin: 0 auto;
+  max-width: 200px;
+}
+
 /* 날짜 헤더 (최신순) */
 .date-header {
   cursor: default;

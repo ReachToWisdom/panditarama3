@@ -58,6 +58,7 @@
   <div class="preset-bar">
     <span class="preset-label">순서:</span>
     <button class="preset-btn active" data-preset="count">영상수</button>
+    <button class="preset-btn" data-preset="chronological">등록순</button>
     <button class="preset-btn" data-preset="latest">최신순</button>
     <button class="preset-btn" data-preset="historical">설법순</button>
     <button class="preset-btn" data-preset="beginner">초보자</button>
@@ -96,6 +97,7 @@
           <button id="btn-ab-b" title="B점 설정" disabled>B</button>
           <button id="btn-ab-clear" title="구간 초기화" class="hidden">✕ 구간해제</button>
           <button id="btn-mark-watched" title="시청 완료">✓ 완료</button>
+          <button id="btn-lock" title="화면 잠금 (주머니 모드)">🔒</button>
           <button id="btn-close-player" title="닫기">✕ 닫기</button>
         </div>
         <div id="ab-status" class="hidden" style="margin-top:8px;font-size:12px;color:var(--accent)"></div>
@@ -145,6 +147,16 @@
       <div style="text-align:right">
         <button class="btn-secondary" id="btn-close-settings">닫기</button>
       </div>
+    </div>
+  </div>
+
+  <!-- 화면 잠금 (주머니 모드) -->
+  <div class="lock-overlay hidden" id="lock-overlay">
+    <div class="lock-content">
+      <div class="lock-icon">🔒</div>
+      <div class="lock-text">화면 잠금 중</div>
+      <div class="lock-hint">해제: 길게 누르기 (2초)</div>
+      <div class="lock-progress" id="lock-progress"></div>
     </div>
   </div>
 

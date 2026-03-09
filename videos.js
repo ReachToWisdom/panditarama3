@@ -153,12 +153,20 @@ const CATEGORY_PRESETS = {
     ]
   },
 
+  // 등록순 (오래된 영상부터 시간순)
+  chronological: {
+    label: "등록순",
+    description: "업로드 날짜순 (오래된 영상부터)",
+    order: null,
+    sortByDate: 'asc'  // 날짜 오름차순
+  },
+
   // 최신순 (최근 업로드된 영상부터)
   latest: {
     label: "최신순",
     description: "최근 업로드된 영상이 위에 표시",
-    order: null,  // 카테고리 순서는 기본, 영상 정렬이 다름
-    sortByDate: true  // 날짜 역순 정렬 플래그
+    order: null,
+    sortByDate: 'desc'  // 날짜 역순 정렬
   },
 
   // 영상 수 기준 (기본)
