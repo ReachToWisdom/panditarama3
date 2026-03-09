@@ -1,5 +1,5 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 258개 영상, 26개 카테고리
+// 총 303개 영상, 26개 카테고리
 // 생성일: 2026-03-09
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
@@ -31,7 +31,11 @@ const CATEGORIES = [
   "오와다 빠띠목카, 전륜성왕경",
   "바와나숟따",
   "아누룻다 장로의 대사유의 경"
-];
+,
+  "낑다다숟따",
+  "니디깐다숟따",
+  "위빳사나 집중수행 법문(2006)"
+]
 
 // 카테고리 순서 프리셋
 const CATEGORY_PRESETS = {
@@ -2745,5 +2749,455 @@ const VIDEOS = [
     "sortKey": 99990000,
     "date": "",
     "order": 0
+  },
+  {
+    "id": "4MtLHM44PvY",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "보시, 회향",
+    "sortKey": 0,
+    "date": "",
+    "order": 258
+  },
+  {
+    "id": "BZNHegrwmuI",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 259
+  },
+  {
+    "id": "7VcL947zmaY",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 260
+  },
+  {
+    "id": "bdeQN0kdoGk",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 261
+  },
+  {
+    "id": "JJjYpOPwj04",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 262
+  },
+  {
+    "id": "LJgaAnFyBcc",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 263
+  },
+  {
+    "id": "YUQjdC6mUmM",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 264
+  },
+  {
+    "id": "e1zBMQMsu0k",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 265
+  },
+  {
+    "id": "pzOlk6jBiBo",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 266
+  },
+  {
+    "id": "6QIuKshaQbk",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 267
+  },
+  {
+    "id": "mrlmGkie6Cg",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 268
+  },
+  {
+    "id": "ukK8VKgwMJU",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 269
+  },
+  {
+    "id": "bOev-XkrVk8",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 270
+  },
+  {
+    "id": "nHpwDC3bWFY",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 271
+  },
+  {
+    "id": "FhfQSNGv7JE",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 272
+  },
+  {
+    "id": "WvLs8T9RcTs",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 273
+  },
+  {
+    "id": "xN6NdcwqEDE",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 274
+  },
+  {
+    "id": "XGlSSSFcHsc",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 275
+  },
+  {
+    "id": "RK2HuyeL0Uw",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 276
+  },
+  {
+    "id": "m40_CqIJmMQ",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 277
+  },
+  {
+    "id": "2m7m0jZ54Wg",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 278
+  },
+  {
+    "id": "p48Q7Fiwkl8",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 279
+  },
+  {
+    "id": "RUSa3nb9VP4",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 280
+  },
+  {
+    "id": "IuRefw8MDtg",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 281
+  },
+  {
+    "id": "XL5-edfCMMA",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 282
+  },
+  {
+    "id": "aj_gFTGinAw",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 283
+  },
+  {
+    "id": "ZCrXN74cJQg",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 284
+  },
+  {
+    "id": "mLU7qa6xJ18",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 285
+  },
+  {
+    "id": "njeDQDzTg54",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 286
+  },
+  {
+    "id": "cdFdQcknGOM",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 287
+  },
+  {
+    "id": "_Nf_yoHl1ss",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 288
+  },
+  {
+    "id": "dgh8xEqsJrY",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 289
+  },
+  {
+    "id": "3HwWX_BSRso",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 290
+  },
+  {
+    "id": "F8itoNwE4UM",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 291
+  },
+  {
+    "id": "AyURnqGU1lw",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 292
+  },
+  {
+    "id": "CB6qkSYyi24",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 293
+  },
+  {
+    "id": "SXAALtUAqKg",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 294
+  },
+  {
+    "id": "M-dI4nLsIxA",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 295
+  },
+  {
+    "id": "Jj_t1jLygLE",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 296
+  },
+  {
+    "id": "zEj7ZeMdJCE",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 297
+  },
+  {
+    "id": "RwZ4mDfrU7A",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 298
+  },
+  {
+    "id": "2L-xOCJUnKk",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 299
+  },
+  {
+    "id": "aL_mZJxPYDU",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "위빳사나 집중수행 법문(2006)",
+    "sortKey": 0,
+    "date": "",
+    "order": 300
+  },
+  {
+    "id": "ipk4TMF1o-8",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "붇다의 날",
+    "sortKey": 0,
+    "date": "",
+    "order": 301
+  },
+  {
+    "id": "DvFYFoP1-vU",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "빤디따라마 큰스님(아신 빤디따 비왐사 사야도)",
+    "sortKey": 0,
+    "date": "",
+    "order": 302
   }
 ];
