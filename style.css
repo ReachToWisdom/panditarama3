@@ -713,3 +713,70 @@ body {
 }
 
 .toast.show { opacity: 1; }
+
+/* 재생 횟수 배지 */
+.play-count {
+  font-size: 10px;
+  min-width: 16px;
+  height: 16px;
+  line-height: 16px;
+  text-align: center;
+  background: var(--accent);
+  color: white;
+  border-radius: 8px;
+  padding: 0 4px;
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* 설치 배너 */
+.install-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 180;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+}
+
+.install-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.install-text strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 2px;
+}
+
+.install-text span {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.install-banner .btn-primary {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  background: var(--accent);
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.install-close {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 4px;
+}

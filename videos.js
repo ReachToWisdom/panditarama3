@@ -149,6 +149,14 @@ const CATEGORY_PRESETS = {
     ]
   },
 
+  // 최신순 (최근 업로드된 영상부터)
+  latest: {
+    label: "최신순",
+    description: "최근 업로드된 영상이 위에 표시",
+    order: null,  // 카테고리 순서는 기본, 영상 정렬이 다름
+    sortByDate: true  // 날짜 역순 정렬 플래그
+  },
+
   // 영상 수 기준 (기본)
   count: {
     label: "영상 수 순",

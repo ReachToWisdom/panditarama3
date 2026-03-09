@@ -49,6 +49,7 @@ function defaultUserData() {
     lastPosition: {},
     repeat: {},
     abLoops: {},
+    playCount: {},  // 영상별 재생 횟수
     settings: { theme: 'auto', sort: 'order', preset: 'count', autoplay: 'on' },
     categoryState: {},
     fabPosition: null, // { x, y } 플로팅 버튼 위치
@@ -172,6 +173,15 @@ function getFilteredVideos(categoryVideos) {
 
 function sortVideos(videos) {
   const sorted = [...videos];
+  const preset = userData.settings.preset || 'count';
+  const presetData = CATEGORY_PRESETS[preset];
+
+  // 최신순 프리셋: 날짜 역순 (최신이 위)
+  if (presetData && presetData.sortByDate) {
+    sorted.sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+    return sorted;
+  }
+
   switch (userData.settings.sort) {
     case 'title': sorted.sort((a, b) => a.title.localeCompare(b.title, 'ko')); break;
     case 'watched': sorted.sort((a, b) => (userData.watched[b.id] || '').localeCompare(userData.watched[a.id] || '')); break;
@@ -256,12 +266,14 @@ function createVideoItem(v) {
   const isStarred = userData.starred.includes(v.id);
   const hasNote = !!userData.notes[v.id];
   const hasRepeat = userData.repeat[v.id] && userData.repeat[v.id].mode !== 'off';
+  const playCount = userData.playCount[v.id] || 0;
 
   const el = document.createElement('div');
   el.className = `video-item${isWatched ? ' watched' : ''}`;
   el.dataset.id = v.id;
   el.innerHTML = `
     <div class="video-check" data-action="toggle-watch" title="시청 완료 표시">${isWatched ? '✓' : ''}</div>
+    ${playCount > 0 ? `<span class="play-count" title="재생 ${playCount}회">${playCount}</span>` : ''}
     <div class="video-info">
       <div class="video-title" data-action="play">${v.title}</div>
       <div class="video-meta">
@@ -576,6 +588,8 @@ function openPlayer(videoId) {
   if (!video) return;
 
   userData.lastWatched = videoId;
+  // 재생 횟수 증가
+  userData.playCount[videoId] = (userData.playCount[videoId] || 0) + 1;
   saveData();
 
   document.getElementById('player-title').textContent = video.title;
@@ -991,10 +1005,65 @@ function init() {
   // PWA
   if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(() => {});
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
+  initInstallBanner();
 
   // ESC
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closePlayer(); document.getElementById('settings-overlay').classList.remove('open'); }
+  });
+}
+
+// ── PWA 설치 배너 ──
+
+let deferredInstallPrompt = null;
+
+function initInstallBanner() {
+  const banner = document.getElementById('install-banner');
+  const btnInstall = document.getElementById('btn-install');
+  const btnClose = document.getElementById('btn-install-close');
+
+  // 이미 설치됨 또는 닫기 기억
+  if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) return;
+  if (localStorage.getItem('panditarama_install_dismissed')) return;
+
+  // Android Chrome: beforeinstallprompt 이벤트
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    document.getElementById('install-desc').textContent = '홈 화면에 추가하면 앱처럼 사용할 수 있어요';
+    banner.classList.remove('hidden');
+  });
+
+  // iOS Safari: 수동 안내
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  if (isIOS && !navigator.standalone) {
+    document.getElementById('install-desc').textContent = '공유 버튼(□↑) → "홈 화면에 추가"를 눌러주세요';
+    btnInstall.textContent = '방법 보기';
+    banner.classList.remove('hidden');
+  }
+
+  btnInstall.addEventListener('click', async () => {
+    if (deferredInstallPrompt) {
+      deferredInstallPrompt.prompt();
+      const result = await deferredInstallPrompt.userChoice;
+      if (result.outcome === 'accepted') showToast('앱이 설치되었습니다!');
+      deferredInstallPrompt = null;
+      banner.classList.add('hidden');
+    } else {
+      // iOS: 안내 토스트
+      showToast('하단 공유 버튼(□↑) → "홈 화면에 추가"');
+    }
+  });
+
+  btnClose.addEventListener('click', () => {
+    banner.classList.add('hidden');
+    localStorage.setItem('panditarama_install_dismissed', '1');
+  });
+
+  // 설치 완료 감지
+  window.addEventListener('appinstalled', () => {
+    banner.classList.add('hidden');
+    showToast('앱이 설치되었습니다!');
   });
 }
 

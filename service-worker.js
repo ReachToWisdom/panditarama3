@@ -1,11 +1,14 @@
 // 빤디따라마 PWA 서비스 워커
-const CACHE_NAME = 'panditarama-v1';
+const CACHE_NAME = 'panditarama-v2';
 const ASSETS = [
   './index.html',
   './style.css',
   './app.js',
   './videos.js',
-  './manifest.json'
+  './manifest.json',
+  './icon-192.svg',
+  './icon-512.svg',
+  './icon-maskable.svg'
 ];
 
 // 설치: 정적 자산 캐싱

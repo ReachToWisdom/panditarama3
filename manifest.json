@@ -7,16 +7,28 @@
   "background_color": "#1a1a2e",
   "theme_color": "#e94560",
   "orientation": "any",
+  "id": "/panditarama3/",
   "icons": [
     {
       "src": "icon-192.svg",
       "sizes": "192x192",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
     },
     {
       "src": "icon-512.svg",
       "sizes": "512x512",
-      "type": "image/svg+xml"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icon-maskable.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
     }
-  ]
+  ],
+  "categories": ["education", "entertainment"],
+  "lang": "ko",
+  "dir": "ltr"
 }

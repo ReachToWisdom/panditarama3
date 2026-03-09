@@ -57,6 +57,7 @@
   <div class="preset-bar">
     <span class="preset-label">순서:</span>
     <button class="preset-btn active" data-preset="count">영상수</button>
+    <button class="preset-btn" data-preset="latest">최신순</button>
     <button class="preset-btn" data-preset="historical">설법순</button>
     <button class="preset-btn" data-preset="beginner">초보자</button>
     <button class="preset-btn" data-preset="practitioner">수행자</button>
@@ -144,6 +145,16 @@
         <button class="btn-secondary" id="btn-close-settings">닫기</button>
       </div>
     </div>
+  </div>
+
+  <!-- 설치 배너 -->
+  <div class="install-banner hidden" id="install-banner">
+    <div class="install-text">
+      <strong>앱으로 설치하기</strong>
+      <span id="install-desc">홈 화면에 추가하면 앱처럼 사용할 수 있어요</span>
+    </div>
+    <button id="btn-install" class="btn-primary">설치</button>
+    <button id="btn-install-close" class="install-close">✕</button>
   </div>
 
   <!-- 토스트 -->
