@@ -660,7 +660,10 @@ function openPlayer(videoId) {
       width: '100%', height: '100%',
       videoId: videoId,
       playerVars: { autoplay: 1, start: startTime, rel: 0, modestbranding: 1, playsinline: 1 },
-      events: { onStateChange: onPlayerStateChange }
+      events: {
+        onReady: (evt) => { evt.target.playVideo(); },
+        onStateChange: onPlayerStateChange
+      }
     });
   } else {
     wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startTime}&rel=0&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
