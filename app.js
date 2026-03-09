@@ -1071,6 +1071,14 @@ const UNLOCK_HOLD_MS = 2000; // 2초 길게 눌러야 해제
 
 function lockScreen() {
   document.getElementById('lock-overlay').classList.remove('hidden');
+  // 전체화면으로 전환 (주소창/메뉴 숨김)
+  const el = document.documentElement;
+  if (el.requestFullscreen) el.requestFullscreen().catch(() => {});
+  else if (el.webkitRequestFullscreen) el.webkitRequestFullscreen();
+  // 화면 꺼짐 방지
+  if (navigator.wakeLock) {
+    navigator.wakeLock.request('screen').catch(() => {});
+  }
   showToast('화면 잠금 — 해제: 2초 길게 누르기');
 }
 
@@ -1083,6 +1091,9 @@ function initLockScreen() {
     lockTimer = setTimeout(() => {
       overlay.classList.add('hidden');
       progress.style.width = '0%';
+      // 전체화면 해제
+      if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
+      else if (document.webkitFullscreenElement) document.webkitExitFullscreen();
       showToast('잠금 해제');
     }, UNLOCK_HOLD_MS);
     // 프로그레스 애니메이션
