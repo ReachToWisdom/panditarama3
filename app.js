@@ -240,7 +240,7 @@ function renderCategories() {
     const sorted = sortVideos(filtered);
     if (searchQuery && sorted.length === 0) continue;
 
-    const isOpen = userData.categoryState[cat] !== false;
+    const isOpen = userData.categoryState[cat] === true;
     const watchedCount = allVideos.filter(v => userData.watched[v.id]).length;
     const catPct = allVideos.length > 0 ? Math.round((watchedCount / allVideos.length) * 100) : 0;
 
@@ -926,7 +926,7 @@ function resetData() {
 
 function toggleAllCategories() {
   const catOrder = getCategoryOrder();
-  const allOpen = catOrder.every(c => userData.categoryState[c] !== false);
+  const allOpen = catOrder.every(c => userData.categoryState[c] === true);
   for (const c of catOrder) userData.categoryState[c] = !allOpen;
   saveData(); render();
   document.getElementById('btn-toggle-all').textContent = allOpen ? '전체 펼치기' : '전체 닫기';

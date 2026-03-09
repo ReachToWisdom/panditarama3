@@ -1,5 +1,5 @@
 // 빤디따라마 PWA 서비스 워커
-const CACHE_NAME = 'panditarama-v3';
+const CACHE_NAME = 'panditarama-v4';
 const ASSETS = [
   './index.html',
   './style.css',
