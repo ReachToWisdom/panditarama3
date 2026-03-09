@@ -1,0 +1,16 @@
+# 원본 데이터 (배포 불필요)
+raw_videos.jsonl
+raw_playlists.jsonl
+playlist_mapping.json
+
+# 개발용
+start.vbs
+panditarama.ico
+PRD.md
+Tasks.md
+TaskExecution.md
+CLAUDE.md
+
+# 시스템
+.DS_Store
+Thumbs.db
