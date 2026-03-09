@@ -1045,6 +1045,15 @@ function init() {
     showToast(e.target.value === 'on' ? '연속 재생 켜짐' : '연속 재생 꺼짐');
   });
 
+  // 바로가기
+  document.getElementById('btn-add-shortcut').addEventListener('click', handleAddShortcut);
+
+  // 이미 PWA로 실행 중이면 바로가기 버튼 숨기기
+  if (window.matchMedia('(display-mode: standalone)').matches || navigator.standalone) {
+    document.getElementById('shortcut-section').innerHTML =
+      '<div style="font-size:13px;color:var(--checked)">✓ 이미 앱으로 실행 중입니다</div>';
+  }
+
   // 데이터 관리
   document.getElementById('btn-export').addEventListener('click', exportData);
   document.getElementById('btn-import').addEventListener('click', importData);
@@ -1062,6 +1071,76 @@ function init() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') { closePlayer(); document.getElementById('settings-overlay').classList.remove('open'); }
   });
+}
+
+// ── 바로가기 만들기 ──
+
+function handleAddShortcut() {
+  const guide = document.getElementById('shortcut-guide');
+
+  // Android: beforeinstallprompt 사용
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    deferredInstallPrompt.userChoice.then(result => {
+      if (result.outcome === 'accepted') showToast('앱이 설치되었습니다!');
+      deferredInstallPrompt = null;
+    });
+    return;
+  }
+
+  // 기기별 안내 표시
+  const ua = navigator.userAgent;
+  const isIOS = /iPad|iPhone|iPod/.test(ua);
+  const isAndroid = /Android/.test(ua);
+  const isMac = /Macintosh/.test(ua) && !isIOS;
+  const isWindows = /Windows/.test(ua);
+
+  let html = '';
+  if (isIOS) {
+    html = `
+      <strong>iPhone/iPad 설치 방법:</strong><br>
+      1. 하단 <strong>공유 버튼</strong>(□↑) 탭<br>
+      2. 아래로 스크롤<br>
+      3. <strong>"홈 화면에 추가"</strong> 탭<br>
+      4. 우측 상단 <strong>"추가"</strong> 탭<br>
+      <br>
+      <em>* Safari에서만 가능합니다</em>
+    `;
+  } else if (isAndroid) {
+    html = `
+      <strong>Android 설치 방법:</strong><br>
+      1. 우측 상단 <strong>⋮ 메뉴</strong> 탭<br>
+      2. <strong>"앱 설치"</strong> 또는 <strong>"홈 화면에 추가"</strong> 탭<br>
+      3. <strong>"설치"</strong> 확인<br>
+      <br>
+      <em>* Chrome 브라우저 권장</em>
+    `;
+  } else if (isMac) {
+    html = `
+      <strong>Mac 설치 방법 (Chrome):</strong><br>
+      1. 주소창 오른쪽 <strong>설치 아이콘</strong>(⊕) 클릭<br>
+      2. <strong>"설치"</strong> 확인<br>
+      <br>
+      <strong>Safari:</strong><br>
+      1. 메뉴 → 파일 → <strong>"Dock에 추가"</strong>
+    `;
+  } else if (isWindows) {
+    html = `
+      <strong>Windows 설치 방법 (Chrome/Edge):</strong><br>
+      1. 주소창 오른쪽 <strong>설치 아이콘</strong>(⊕) 클릭<br>
+      2. <strong>"설치"</strong> 확인<br>
+      <br>
+      앱처럼 독립 창으로 실행됩니다.
+    `;
+  } else {
+    html = `
+      브라우저 메뉴에서 <strong>"홈 화면에 추가"</strong> 또는<br>
+      <strong>"앱 설치"</strong>를 찾아주세요.
+    `;
+  }
+
+  guide.innerHTML = html;
+  guide.classList.toggle('hidden');
 }
 
 // ── 화면 잠금 (주머니 모드) ──
