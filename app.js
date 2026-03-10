@@ -650,12 +650,16 @@ function openPlayer(videoId) {
   updateRepeatButton();
   updateNextInfo();
 
-  // 플레이어 생성
+  // 플레이어: 기존 인스턴스 재사용 (모바일 자동재생 정책 우회)
   const startTime = Math.floor(safeFloat(userData.lastPosition[videoId]));
-  const wrapper = document.getElementById('player-wrapper');
-  wrapper.innerHTML = '';
 
-  if (ytReady) {
+  if (ytReady && ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+    // 기존 플레이어 재사용 → 모바일에서도 자동재생 됨
+    ytPlayer.loadVideoById({ videoId: videoId, startSeconds: startTime });
+  } else if (ytReady) {
+    // 최초 1회만 새 플레이어 생성
+    const wrapper = document.getElementById('player-wrapper');
+    wrapper.innerHTML = '';
     ytPlayer = new YT.Player(wrapper, {
       width: '100%', height: '100%',
       videoId: videoId,
@@ -666,6 +670,7 @@ function openPlayer(videoId) {
       }
     });
   } else {
+    const wrapper = document.getElementById('player-wrapper');
     wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startTime}&rel=0&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
   }
 
@@ -674,13 +679,14 @@ function openPlayer(videoId) {
 
 function closePlayer() {
   if (ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
-    try { userData.lastPosition[currentVideoId] = Math.floor(ytPlayer.getCurrentTime()); saveData(); } catch (e) {}
+    try {
+      userData.lastPosition[currentVideoId] = Math.floor(ytPlayer.getCurrentTime());
+      saveData();
+      ytPlayer.pauseVideo(); // 파괴하지 않고 일시정지 (재사용 위해)
+    } catch (e) {}
   }
   clearAbLoopTimer();
-  if (ytPlayer && typeof ytPlayer.destroy === 'function') { try { ytPlayer.destroy(); } catch (e) {} }
-  ytPlayer = null;
   currentVideoId = null;
-  document.getElementById('player-wrapper').innerHTML = '';
   document.getElementById('player-overlay').classList.remove('open');
   render();
 }
