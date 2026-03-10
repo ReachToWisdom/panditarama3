@@ -97,12 +97,25 @@ let abPointB = null;
 function getCategoryOrder() {
   const preset = userData.settings.preset || 'chronological';
   const presetData = CATEGORY_PRESETS[preset];
+
+  // 등록순: 각 카테고리의 첫 영상(가장 오래된) 업로드일 기준 정렬
+  if (presetData && presetData.sortCategoriesByFirstVideo) {
+    const catFirstDate = {};
+    for (const cat of CATEGORIES) {
+      const dates = VIDEOS.filter(v => v.category === cat)
+        .map(v => v.date || '9999')
+        .sort();
+      catFirstDate[cat] = dates[0] || '9999';
+    }
+    return [...CATEGORIES].sort((a, b) => catFirstDate[a].localeCompare(catFirstDate[b]));
+  }
+
   if (presetData && presetData.order) {
     // 프리셋에 없는 카테고리도 뒤에 추가
     const remaining = CATEGORIES.filter(c => !presetData.order.includes(c));
     return [...presetData.order, ...remaining];
   }
-  return CATEGORIES; // 기본: 등록순
+  return CATEGORIES;
 }
 
 /** 현재 순서에서 전체 재생 목록 (순서대로) 생성 */

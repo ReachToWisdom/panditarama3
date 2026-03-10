@@ -153,12 +153,12 @@ const CATEGORY_PRESETS = {
     ]
   },
 
-  // 등록순 (오래된 영상부터 시간순)
+  // 등록순 (각 카테고리의 첫 영상 업로드일 기준)
   chronological: {
     label: "등록순",
-    description: "업로드 날짜순 (오래된 영상부터)",
+    description: "카테고리 첫 영상 업로드 순서",
     order: null,
-    sortByDate: 'asc'  // 날짜 오름차순
+    sortCategoriesByFirstVideo: true  // 카테고리별 첫 영상 날짜 기준 정렬
   },
 
   // 최신순 (최근 업로드된 영상부터)
