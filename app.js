@@ -74,6 +74,8 @@ function loadData() {
 function saveData() {
   try {
     localStorage.setItem(CONFIG.STORAGE_KEY, JSON.stringify(userData));
+    // 클라우드 동기화 (로그인 시 자동)
+    if (window.syncModule && window.syncModule.push) window.syncModule.push();
   } catch (e) {
     console.error('데이터 저장 실패:', e);
     showToast('저장 실패: 저장소 용량 초과');
