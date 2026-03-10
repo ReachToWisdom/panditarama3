@@ -49,6 +49,7 @@ body {
   background: var(--bg-header);
   color: white;
   padding: 8px 12px;
+  padding-top: calc(env(safe-area-inset-top, 0px) + 8px);
   display: flex;
   align-items: center;
   gap: 8px;
