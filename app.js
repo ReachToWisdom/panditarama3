@@ -1119,47 +1119,156 @@ function handleAddShortcut() {
   const isMac = /Macintosh/.test(ua) && !isIOS;
   const isWindows = /Windows/.test(ua);
 
+  const isSafari = isIOS && /Safari/.test(ua) && !/CriOS|FxiOS|EdgiOS/.test(ua);
+  const isIOSNotSafari = isIOS && !isSafari;
+
   let html = '';
-  if (isIOS) {
+  if (isIOSNotSafari) {
+    // iOS에서 Safari가 아닌 브라우저
     html = `
-      <strong>iPhone/iPad 설치 방법:</strong><br>
-      1. 하단 <strong>공유 버튼</strong>(□↑) 탭<br>
-      2. 아래로 스크롤<br>
-      3. <strong>"홈 화면에 추가"</strong> 탭<br>
-      4. 우측 상단 <strong>"추가"</strong> 탭<br>
-      <br>
-      <em>* Safari에서만 가능합니다</em>
+      <div class="install-guide">
+        <div class="guide-warning">
+          <span style="font-size:24px">⚠️</span>
+          <strong>Safari에서 열어주세요</strong>
+        </div>
+        <p>iPhone/iPad는 <strong>Safari</strong>에서만 홈 화면에 추가할 수 있습니다.</p>
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-content">
+            <strong>Safari 앱</strong>을 열어주세요
+            <div class="guide-icon">🧭 Safari</div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-content">
+            주소창에 아래 주소를 입력하세요
+            <div class="guide-url">reachtowisdom.github.io/panditarama3</div>
+            <button class="btn-copy-url" onclick="navigator.clipboard.writeText('https://reachtowisdom.github.io/panditarama3/').then(()=>showToast('주소 복사됨!'))">📋 주소 복사</button>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">3</div>
+          <div class="guide-content">Safari에서 아래 설치 방법을 따라하세요</div>
+        </div>
+      </div>
+    `;
+  } else if (isIOS) {
+    // iOS Safari
+    html = `
+      <div class="install-guide">
+        <div class="guide-title">iPhone/iPad 홈 화면에 추가하기</div>
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-content">
+            화면 <strong>하단</strong>의 <strong>공유 버튼</strong>을 탭하세요
+            <div class="guide-visual">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2">
+                <rect x="5" y="8" width="14" height="13" rx="2"/>
+                <path d="M12 3v12M8 7l4-4 4 4"/>
+              </svg>
+              <span>이 모양의 버튼</span>
+            </div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-content">
+            메뉴를 <strong>위로 스크롤</strong>하여<br>
+            <strong>"홈 화면에 추가"</strong>를 찾아 탭하세요
+            <div class="guide-visual">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#007AFF" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <path d="M12 8v8M8 12h8"/>
+              </svg>
+              <span>홈 화면에 추가</span>
+            </div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">3</div>
+          <div class="guide-content">
+            우측 상단 <strong>"추가"</strong>를 탭하면 완료!
+            <div class="guide-result">홈 화면에 앱 아이콘이 생깁니다 🎉</div>
+          </div>
+        </div>
+      </div>
     `;
   } else if (isAndroid) {
     html = `
-      <strong>Android 설치 방법:</strong><br>
-      1. 우측 상단 <strong>⋮ 메뉴</strong> 탭<br>
-      2. <strong>"앱 설치"</strong> 또는 <strong>"홈 화면에 추가"</strong> 탭<br>
-      3. <strong>"설치"</strong> 확인<br>
-      <br>
-      <em>* Chrome 브라우저 권장</em>
+      <div class="install-guide">
+        <div class="guide-title">Android 홈 화면에 추가하기</div>
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-content">
+            우측 상단 <strong>⋮ 메뉴</strong>를 탭하세요
+            <div class="guide-visual">
+              <span style="font-size:24px;font-weight:bold">⋮</span>
+              <span>점 세 개 메뉴</span>
+            </div>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-content">
+            <strong>"앱 설치"</strong> 또는 <strong>"홈 화면에 추가"</strong>를 탭하세요
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">3</div>
+          <div class="guide-content">
+            <strong>"설치"</strong>를 탭하면 완료!
+            <div class="guide-result">홈 화면에 앱 아이콘이 생깁니다 🎉</div>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--text-muted);margin-top:8px">* Chrome 브라우저 권장</p>
+      </div>
     `;
   } else if (isMac) {
     html = `
-      <strong>Mac 설치 방법 (Chrome):</strong><br>
-      1. 주소창 오른쪽 <strong>설치 아이콘</strong>(⊕) 클릭<br>
-      2. <strong>"설치"</strong> 확인<br>
-      <br>
-      <strong>Safari:</strong><br>
-      1. 메뉴 → 파일 → <strong>"Dock에 추가"</strong>
+      <div class="install-guide">
+        <div class="guide-title">Mac에 설치하기</div>
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-content">
+            <strong>Chrome:</strong> 주소창 오른쪽 <strong>설치 아이콘</strong>(⊕) 클릭<br>
+            <strong>Safari:</strong> 메뉴 → 파일 → <strong>"Dock에 추가"</strong>
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-content">
+            <strong>"설치"</strong> 확인하면 완료!
+            <div class="guide-result">독립 앱으로 실행됩니다 🎉</div>
+          </div>
+        </div>
+      </div>
     `;
   } else if (isWindows) {
     html = `
-      <strong>Windows 설치 방법 (Chrome/Edge):</strong><br>
-      1. 주소창 오른쪽 <strong>설치 아이콘</strong>(⊕) 클릭<br>
-      2. <strong>"설치"</strong> 확인<br>
-      <br>
-      앱처럼 독립 창으로 실행됩니다.
+      <div class="install-guide">
+        <div class="guide-title">PC에 설치하기</div>
+        <div class="guide-step">
+          <div class="guide-num">1</div>
+          <div class="guide-content">
+            주소창 오른쪽 <strong>설치 아이콘</strong>(⊕) 클릭
+          </div>
+        </div>
+        <div class="guide-step">
+          <div class="guide-num">2</div>
+          <div class="guide-content">
+            <strong>"설치"</strong> 확인하면 완료!
+            <div class="guide-result">독립 앱으로 실행됩니다 🎉</div>
+          </div>
+        </div>
+      </div>
     `;
   } else {
     html = `
-      브라우저 메뉴에서 <strong>"홈 화면에 추가"</strong> 또는<br>
-      <strong>"앱 설치"</strong>를 찾아주세요.
+      <div class="install-guide">
+        <div class="guide-title">홈 화면에 추가하기</div>
+        <p>브라우저 메뉴에서 <strong>"홈 화면에 추가"</strong> 또는 <strong>"앱 설치"</strong>를 찾아주세요.</p>
+      </div>
     `;
   }
 
