@@ -50,7 +50,7 @@ function defaultUserData() {
     repeat: {},
     abLoops: {},
     playCount: {},  // 영상별 재생 횟수
-    settings: { theme: 'auto', sort: 'order', preset: 'count', autoplay: 'on' },
+    settings: { theme: 'auto', sort: 'order', preset: 'chronological', autoplay: 'on' },
     categoryState: {},
     fabPosition: null, // { x, y } 플로팅 버튼 위치
   };
@@ -95,14 +95,14 @@ let abPointB = null;
 
 /** 현재 프리셋에 따른 카테고리 순서 반환 */
 function getCategoryOrder() {
-  const preset = userData.settings.preset || 'count';
+  const preset = userData.settings.preset || 'chronological';
   const presetData = CATEGORY_PRESETS[preset];
   if (presetData && presetData.order) {
     // 프리셋에 없는 카테고리도 뒤에 추가
     const remaining = CATEGORIES.filter(c => !presetData.order.includes(c));
     return [...presetData.order, ...remaining];
   }
-  return CATEGORIES; // 기본: 영상수 순
+  return CATEGORIES; // 기본: 등록순
 }
 
 /** 현재 순서에서 전체 재생 목록 (순서대로) 생성 */
@@ -173,7 +173,7 @@ function getFilteredVideos(categoryVideos) {
 
 function sortVideos(videos) {
   const sorted = [...videos];
-  const preset = userData.settings.preset || 'count';
+  const preset = userData.settings.preset || 'chronological';
   const presetData = CATEGORY_PRESETS[preset];
 
   // 날짜순 프리셋: 등록순(asc) 또는 최신순(desc)
@@ -227,7 +227,7 @@ function renderCategories() {
   const container = document.getElementById('category-list');
   container.innerHTML = '';
 
-  const preset = userData.settings.preset || 'count';
+  const preset = userData.settings.preset || 'chronological';
   const presetData = CATEGORY_PRESETS[preset];
 
   // 날짜순: 카테고리 무시, 전체 영상을 날짜순으로 표시
@@ -650,12 +650,16 @@ function openPlayer(videoId) {
   updateRepeatButton();
   updateNextInfo();
 
-  // 플레이어 생성
+  // 플레이어: 기존 인스턴스 재사용 (모바일 자동재생 정책 우회)
   const startTime = Math.floor(safeFloat(userData.lastPosition[videoId]));
-  const wrapper = document.getElementById('player-wrapper');
-  wrapper.innerHTML = '';
 
-  if (ytReady) {
+  if (ytReady && ytPlayer && typeof ytPlayer.loadVideoById === 'function') {
+    // 기존 플레이어 재사용 → 모바일에서도 자동재생 됨
+    ytPlayer.loadVideoById({ videoId: videoId, startSeconds: startTime });
+  } else if (ytReady) {
+    // 최초 1회만 새 플레이어 생성
+    const wrapper = document.getElementById('player-wrapper');
+    wrapper.innerHTML = '';
     ytPlayer = new YT.Player(wrapper, {
       width: '100%', height: '100%',
       videoId: videoId,
@@ -666,6 +670,7 @@ function openPlayer(videoId) {
       }
     });
   } else {
+    const wrapper = document.getElementById('player-wrapper');
     wrapper.innerHTML = `<iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&start=${startTime}&rel=0&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
   }
 
@@ -674,13 +679,14 @@ function openPlayer(videoId) {
 
 function closePlayer() {
   if (ytPlayer && typeof ytPlayer.getCurrentTime === 'function') {
-    try { userData.lastPosition[currentVideoId] = Math.floor(ytPlayer.getCurrentTime()); saveData(); } catch (e) {}
+    try {
+      userData.lastPosition[currentVideoId] = Math.floor(ytPlayer.getCurrentTime());
+      saveData();
+      ytPlayer.pauseVideo(); // 파괴하지 않고 일시정지 (재사용 위해)
+    } catch (e) {}
   }
   clearAbLoopTimer();
-  if (ytPlayer && typeof ytPlayer.destroy === 'function') { try { ytPlayer.destroy(); } catch (e) {} }
-  ytPlayer = null;
   currentVideoId = null;
-  document.getElementById('player-wrapper').innerHTML = '';
   document.getElementById('player-overlay').classList.remove('open');
   render();
 }
@@ -954,7 +960,7 @@ function init() {
   document.getElementById('autoplay-select').value = userData.settings.autoplay || 'on';
 
   // 프리셋 버튼 활성화
-  const activePreset = userData.settings.preset || 'count';
+  const activePreset = userData.settings.preset || 'chronological';
   document.querySelectorAll('.preset-btn').forEach(btn => {
     btn.classList.toggle('active', btn.dataset.preset === activePreset);
   });

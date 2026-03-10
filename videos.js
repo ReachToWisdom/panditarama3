@@ -167,13 +167,6 @@ const CATEGORY_PRESETS = {
     description: "최근 업로드된 영상이 위에 표시",
     order: null,
     sortByDate: 'desc'  // 날짜 역순 정렬
-  },
-
-  // 영상 수 기준 (기본)
-  count: {
-    label: "영상 수 순",
-    description: "영상이 많은 카테고리부터",
-    order: null  // null이면 CATEGORIES 기본 순서 사용
   }
 };
 
