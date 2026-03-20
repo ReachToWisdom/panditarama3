@@ -2,6 +2,10 @@
  * 빤디따라마 YouTube 채널 영상 자동 업데이트 스크립트
  * GitHub Actions에서 실행 (매일 1회)
  * YouTube Data API v3 사용
+ *
+ * 수집 방식:
+ * 1. 재생목록 기반 영상 수집 (카테고리 자동 분류)
+ * 2. 채널 전체 업로드 영상 수집 (재생목록 누락분 → "비분류")
  */
 
 import fs from 'fs';
@@ -11,6 +15,7 @@ const CHANNEL_ID = 'UCDkWGqNo6A3jTAY1qe53sZA';
 const API_KEY = process.env.YOUTUBE_API_KEY;
 const VIDEOS_FILE = 'videos.js';
 const REPORT_FILE = 'scripts/update-report.md';
+const UNCATEGORIZED = '비분류';
 
 if (!API_KEY) {
   console.error('YOUTUBE_API_KEY 환경변수가 설정되지 않았습니다');
@@ -75,6 +80,20 @@ async function fetchPlaylistItems(playlistId) {
   return items;
 }
 
+/** 채널의 전체 업로드 영상 조회 (uploads 재생목록 사용) */
+async function fetchAllUploads() {
+  // 채널 정보에서 uploads 재생목록 ID 조회
+  const chRes = await apiGet(
+    `/channels?part=contentDetails&id=${CHANNEL_ID}`
+  );
+  if (chRes.error) throw new Error(`API 에러: ${JSON.stringify(chRes.error)}`);
+  const uploadsId = chRes.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
+  if (!uploadsId) throw new Error('uploads 재생목록 ID를 찾을 수 없습니다');
+
+  console.log(`  uploads 재생목록 ID: ${uploadsId}`);
+  return await fetchPlaylistItems(uploadsId);
+}
+
 /** 영상 상세 정보 (duration) 조회 - 50개씩 배치 */
 async function fetchVideoDetails(videoIds) {
   const details = {};
@@ -89,6 +108,7 @@ async function fetchVideoDetails(videoIds) {
         duration: parseDuration(item.contentDetails.duration),
         durationSec: parseDurationSec(item.contentDetails.duration),
         date: item.snippet.publishedAt?.slice(0, 10) || '',
+        title: item.snippet.title,
       };
     }
   }
@@ -133,7 +153,6 @@ function makeSortKey(title, date) {
   const year = extractYear(title) || (date ? parseInt(date.slice(0, 4)) : 0);
   if (year > 0 && ep > 0) return year * 10000 + ep;
   if (ep > 0) return ep;
-  // 날짜 기반 폴백
   if (date) return parseInt(date.replace(/-/g, ''));
   return 0;
 }
@@ -143,14 +162,12 @@ function makeSortKey(title, date) {
 function loadExistingVideos() {
   try {
     const content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
-    // VIDEOS 배열에서 id만 추출
     const ids = new Set();
     const idRegex = /"id":\s*"([^"]+)"/g;
     let match;
     while ((match = idRegex.exec(content)) !== null) {
       ids.add(match[1]);
     }
-    // 기존 카테고리 추출
     const categories = new Set();
     const catRegex = /"category":\s*"([^"]+)"/g;
     while ((match = catRegex.exec(content)) !== null) {
@@ -166,7 +183,7 @@ function loadExistingVideos() {
 // ── 메인 ──
 
 async function main() {
-  console.log('YouTube 채널 영상 업데이트 시작...');
+  console.log('YouTube 채널 영상 업데이트 시작...\n');
 
   // 1. 재생목록 조회
   const playlists = await fetchPlaylists();
@@ -174,17 +191,22 @@ async function main() {
 
   // 2. 기존 데이터 로드
   const existing = loadExistingVideos();
-  console.log(`기존 영상 ${existing.ids.size}개`);
+  console.log(`기존 영상 ${existing.ids.size}개\n`);
 
-  // 3. 각 재생목록의 영상 수집
-  const allVideos = [];         // 새로 추가할 영상
-  const newCategories = [];     // 신규 카테고리
-  const existingCategoryVideos = []; // 기존 카테고리의 새 영상
+  // 3. 재생목록 기반 영상 수집
+  const allVideos = [];
+  const newCategories = [];
+  const existingCategoryVideos = [];
+  const playlistVideoIds = new Set(); // 재생목록에 포함된 모든 영상 ID
 
   for (const pl of playlists) {
     const items = await fetchPlaylistItems(pl.id);
     const isNewCategory = !existing.categories.has(pl.title);
-    if (isNewCategory) newCategories.push(pl.title);
+    if (isNewCategory && items.length > 0) newCategories.push(pl.title);
+
+    for (const item of items) {
+      playlistVideoIds.add(item.id);
+    }
 
     const newItems = items.filter(item => !existing.ids.has(item.id));
     if (newItems.length > 0) {
@@ -202,27 +224,55 @@ async function main() {
     console.log(`  ${pl.title}: ${items.length}개 (새 영상 ${newItems.length}개)${isNewCategory ? ' [신규 카테고리]' : ''}`);
   }
 
+  // 4. 채널 전체 업로드 영상 수집 (재생목록 누락분 찾기)
+  console.log('\n채널 전체 업로드 영상 조회...');
+  const allUploads = await fetchAllUploads();
+  console.log(`  전체 업로드: ${allUploads.length}개`);
+
+  // 재생목록에도 없고 기존 videos.js에도 없는 영상 = 비분류
+  const uncategorizedItems = allUploads.filter(
+    item => !playlistVideoIds.has(item.id) && !existing.ids.has(item.id)
+  );
+
+  if (uncategorizedItems.length > 0) {
+    console.log(`  비분류 새 영상: ${uncategorizedItems.length}개`);
+    for (const item of uncategorizedItems) {
+      allVideos.push({ ...item, category: UNCATEGORIZED });
+    }
+    // "비분류" 카테고리가 새로 필요한지 확인
+    if (!existing.categories.has(UNCATEGORIZED) && !newCategories.includes(UNCATEGORIZED)) {
+      newCategories.push(UNCATEGORIZED);
+    }
+  } else {
+    console.log('  비분류 새 영상 없음');
+  }
+
+  // 기존 videos.js에 있지만 재생목록에 없는 영상도 체크 (정보 출력만)
+  const existingUncategorized = allUploads.filter(
+    item => !playlistVideoIds.has(item.id) && existing.ids.has(item.id)
+  );
+  if (existingUncategorized.length > 0) {
+    console.log(`  (기존 비분류 영상: ${existingUncategorized.length}개 - 이미 등록됨)`);
+  }
+
   if (allVideos.length === 0) {
-    console.log('새 영상 없음. 종료.');
-    // 리포트 파일 삭제 (이전 실행 잔여물)
+    console.log('\n새 영상 없음. 종료.');
     try { fs.unlinkSync(REPORT_FILE); } catch {}
     return;
   }
 
   console.log(`\n새 영상 총 ${allVideos.length}개 발견!`);
 
-  // 4. 영상 상세 정보 (duration) 조회
+  // 5. 영상 상세 정보 (duration) 조회
   const newVideoIds = allVideos.map(v => v.id);
   const details = await fetchVideoDetails(newVideoIds);
 
-  // 5. videos.js 업데이트
-  // 기존 파일의 VIDEOS 배열에 새 영상 추가
+  // 6. videos.js 업데이트
   const content = existing.content;
+  let updatedContent = content;
 
   // CATEGORIES 업데이트
-  let updatedContent = content;
   if (newCategories.length > 0) {
-    // CATEGORIES 배열 끝에 새 카테고리 추가
     const catEndMatch = updatedContent.match(/const CATEGORIES = \[[\s\S]*?\];/);
     if (catEndMatch) {
       const oldCat = catEndMatch[0];
@@ -235,11 +285,12 @@ async function main() {
 
   // VIDEOS 배열에 새 영상 추가
   const newEntries = allVideos.map((v, i) => {
-    const d = details[v.id] || { duration: '0:00', durationSec: 0, date: '' };
-    const sortKey = makeSortKey(v.title, d.date);
+    const d = details[v.id] || { duration: '0:00', durationSec: 0, date: '', title: v.title };
+    const title = d.title || v.title;
+    const sortKey = makeSortKey(title, d.date);
     return `  {
     "id": "${v.id}",
-    "title": ${JSON.stringify(v.title)},
+    "title": ${JSON.stringify(title)},
     "duration": "${d.duration}",
     "durationSec": ${d.durationSec},
     "category": ${JSON.stringify(v.category)},
@@ -249,13 +300,12 @@ async function main() {
   }`;
   }).join(',\n');
 
-  // VIDEOS 배열 끝에 추가
   const videosEndMatch = updatedContent.lastIndexOf('\n];');
   if (videosEndMatch >= 0) {
     updatedContent = updatedContent.slice(0, videosEndMatch) + ',\n' + newEntries + '\n];';
   }
 
-  // 주석의 총 영상 수 업데이트
+  // 주석 업데이트
   const newTotal = existing.ids.size + allVideos.length;
   updatedContent = updatedContent.replace(
     /\/\/ 총 \d+개 영상/,
@@ -269,13 +319,13 @@ async function main() {
   fs.writeFileSync(VIDEOS_FILE, updatedContent, 'utf-8');
   console.log(`videos.js 업데이트 완료 (총 ${newTotal}개)`);
 
-  // 6. 이메일 알림용 리포트 생성
-  const report = generateReport(allVideos, newCategories, existingCategoryVideos, newTotal);
+  // 7. 리포트 생성
+  const report = generateReport(allVideos, newCategories, existingCategoryVideos, uncategorizedItems, newTotal);
   fs.writeFileSync(REPORT_FILE, report, 'utf-8');
   console.log('리포트 생성 완료');
 }
 
-function generateReport(newVideos, newCategories, existingCategoryVideos, total) {
+function generateReport(newVideos, newCategories, existingCategoryVideos, uncategorizedItems, total) {
   const lines = [];
   lines.push(`## 빤디따라마 영상 업데이트\n`);
   lines.push(`- **업데이트 일시**: ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC`);
@@ -303,6 +353,14 @@ function generateReport(newVideos, newCategories, existingCategoryVideos, total)
       for (const t of cat.titles) {
         lines.push(`  - ${t}`);
       }
+    }
+    lines.push('');
+  }
+
+  if (uncategorizedItems.length > 0) {
+    lines.push(`### 📂 비분류 영상 (재생목록 미포함) (${uncategorizedItems.length}개)\n`);
+    for (const v of uncategorizedItems) {
+      lines.push(`  - ${v.title}`);
     }
     lines.push('');
   }
