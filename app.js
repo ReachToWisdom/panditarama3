@@ -53,6 +53,7 @@ function defaultUserData() {
     settings: { theme: 'auto', sort: 'order', preset: 'chronological', autoplay: 'on' },
     categoryState: {},
     fabPosition: null, // { x, y } 플로팅 버튼 위치
+    knownVideoCount: 0, // 마지막으로 확인한 영상 수 (신규 감지용)
   };
 }
 
@@ -63,12 +64,17 @@ function loadData() {
       const data = JSON.parse(raw);
       const merged = { ...defaultUserData(), ...data };
       merged.settings = { ...defaultUserData().settings, ...data.settings };
+      // 기존 사용자: knownVideoCount 없으면 현재 영상 수로 초기화
+      if (!data.knownVideoCount) merged.knownVideoCount = VIDEOS.length;
       return merged;
     }
   } catch (e) {
     console.error('데이터 로드 실패:', e);
   }
-  return defaultUserData();
+  // 신규 사용자: 현재 영상 수로 초기화 (모든 영상이 신규로 뜨는 것 방지)
+  const defaults = defaultUserData();
+  defaults.knownVideoCount = VIDEOS.length;
+  return defaults;
 }
 
 function saveData() {
@@ -238,9 +244,61 @@ function renderResume() {
   document.getElementById('resume-sub').textContent = pos ? `${formatTime(pos)} / ${video.duration}` : video.category;
 }
 
+/** 신규 영상 목록 반환 (knownVideoCount 이후에 추가된 영상) */
+function getNewVideos() {
+  const known = userData.knownVideoCount || 0;
+  if (known === 0 || known >= VIDEOS.length) return [];
+  return VIDEOS.slice(known);
+}
+
+/** 신규 영상 확인 완료 처리 */
+function dismissNewVideos() {
+  userData.knownVideoCount = VIDEOS.length;
+  saveData();
+  render();
+}
+
+/** 신규 영상 섹션 렌더링 */
+function renderNewVideosSection(container) {
+  const newVideos = getNewVideos();
+  if (newVideos.length === 0) return;
+
+  const section = document.createElement('div');
+  section.className = 'new-videos-section';
+  section.innerHTML = `
+    <div class="new-videos-header">
+      <span class="new-videos-badge">${newVideos.length}</span>
+      <span class="new-videos-title">신규 등록 영상</span>
+      <button class="new-videos-dismiss" id="btn-dismiss-new">✓ 확인</button>
+    </div>
+    <div class="new-videos-body"></div>
+  `;
+
+  const body = section.querySelector('.new-videos-body');
+  // 카테고리별로 그룹핑
+  const catMap = {};
+  for (const v of newVideos) {
+    if (!catMap[v.category]) catMap[v.category] = [];
+    catMap[v.category].push(v);
+  }
+  for (const [cat, videos] of Object.entries(catMap)) {
+    const catLabel = document.createElement('div');
+    catLabel.className = 'new-videos-cat';
+    catLabel.textContent = cat;
+    body.appendChild(catLabel);
+    for (const v of videos) body.appendChild(createVideoItem(v));
+  }
+
+  section.querySelector('#btn-dismiss-new').addEventListener('click', dismissNewVideos);
+  container.appendChild(section);
+}
+
 function renderCategories() {
   const container = document.getElementById('category-list');
   container.innerHTML = '';
+
+  // 신규 영상 섹션 (항상 최상단)
+  renderNewVideosSection(container);
 
   const preset = userData.settings.preset || 'chronological';
   const presetData = CATEGORY_PRESETS[preset];

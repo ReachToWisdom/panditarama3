@@ -843,6 +843,32 @@ body {
   padding: 4px;
 }
 
+/* 신규 영상 섹션 */
+.new-videos-section {
+  margin: 8px; border-radius: 12px; overflow: hidden;
+  border: 2px solid var(--accent); background: var(--bg-card);
+}
+.new-videos-header {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 14px; background: var(--accent); color: white;
+}
+.new-videos-badge {
+  background: white; color: var(--accent); font-weight: bold;
+  min-width: 24px; height: 24px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.new-videos-title { flex: 1; font-weight: bold; font-size: 15px; }
+.new-videos-dismiss {
+  background: rgba(255,255,255,0.2); border: 1px solid rgba(255,255,255,0.4);
+  color: white; padding: 4px 12px; border-radius: 6px; cursor: pointer; font-size: 13px;
+}
+.new-videos-dismiss:hover { background: rgba(255,255,255,0.3); }
+.new-videos-cat {
+  padding: 6px 14px; font-size: 12px; font-weight: bold;
+  color: var(--accent); background: var(--bg); border-top: 1px solid var(--border);
+}
+.new-videos-body .video-item { border-left: 3px solid var(--accent); }
+
 /* 설치 가이드 */
 .install-guide { font-size: 14px; line-height: 1.6; }
 .guide-title { font-size: 16px; font-weight: bold; margin-bottom: 12px; color: var(--accent); }
