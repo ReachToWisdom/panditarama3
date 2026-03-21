@@ -271,15 +271,18 @@ async function main() {
   const content = existing.content;
   let updatedContent = content;
 
-  // CATEGORIES 업데이트
+  // CATEGORIES 배열에 새 카테고리 추가
   if (newCategories.length > 0) {
-    const catEndMatch = updatedContent.match(/const CATEGORIES = \[[\s\S]*?\];/);
-    if (catEndMatch) {
-      const oldCat = catEndMatch[0];
-      const insertPoint = oldCat.lastIndexOf(']');
-      const newCatEntries = newCategories.map(c => `  "${c}"`).join(',\n');
-      const newCat = oldCat.slice(0, insertPoint) + ',\n' + newCatEntries + '\n]';
-      updatedContent = updatedContent.replace(oldCat, newCat);
+    const catMarker = 'const CATEGORIES = [';
+    const catStart = updatedContent.indexOf(catMarker);
+    if (catStart >= 0) {
+      // CATEGORIES 배열의 닫는 ] 찾기 (catStart 이후 첫 번째 ])
+      const catSearchFrom = catStart + catMarker.length;
+      const catEnd = updatedContent.indexOf('\n]', catSearchFrom);
+      if (catEnd >= 0) {
+        const newCatEntries = newCategories.map(c => `  "${c}"`).join(',\n');
+        updatedContent = updatedContent.slice(0, catEnd) + ',\n' + newCatEntries + updatedContent.slice(catEnd);
+      }
     }
   }
 
@@ -300,9 +303,16 @@ async function main() {
   }`;
   }).join(',\n');
 
-  const videosEndMatch = updatedContent.lastIndexOf('\n];');
-  if (videosEndMatch >= 0) {
-    updatedContent = updatedContent.slice(0, videosEndMatch) + ',\n' + newEntries + '\n];';
+  // VIDEOS 배열의 마지막 ];을 찾아서 그 앞에 삽입
+  // const VIDEOS = [ ... ]; 의 마지막 ];
+  const videosMarker = 'const VIDEOS = [';
+  const videosStart = updatedContent.indexOf(videosMarker);
+  if (videosStart >= 0) {
+    // VIDEOS 이후의 마지막 \n]; 찾기
+    const videosEndMatch = updatedContent.lastIndexOf('\n];');
+    if (videosEndMatch >= videosStart) {
+      updatedContent = updatedContent.slice(0, videosEndMatch) + ',\n' + newEntries + '\n];';
+    }
   }
 
   // 주석 업데이트
