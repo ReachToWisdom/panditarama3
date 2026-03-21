@@ -244,11 +244,11 @@ function renderResume() {
   document.getElementById('resume-sub').textContent = pos ? `${formatTime(pos)} / ${video.duration}` : video.category;
 }
 
-/** 신규 영상 목록 반환 (knownVideoCount 이후에 추가된 영상) */
+/** 신규 영상 목록 반환 (새로 추가된 + 안 시청한 영상) */
 function getNewVideos() {
   const known = userData.knownVideoCount || 0;
   if (known === 0 || known >= VIDEOS.length) return [];
-  return VIDEOS.slice(known);
+  return VIDEOS.slice(known).filter(v => !userData.watched[v.id]);
 }
 
 /** 신규 영상 확인 완료 처리 */
