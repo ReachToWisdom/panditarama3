@@ -1144,7 +1144,11 @@ function init() {
   document.getElementById('btn-toggle-all').addEventListener('click', toggleAllCategories);
 
   // PWA
-  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js').catch(() => {});
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js', { updateViaCache: 'none' })
+      .then(reg => { reg.update(); })
+      .catch(() => {});
+  }
   if (navigator.storage && navigator.storage.persist) navigator.storage.persist();
   initInstallBanner();
   initLockScreen();
