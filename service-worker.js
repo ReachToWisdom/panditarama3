@@ -1,5 +1,5 @@
 // 빤디따라마 PWA 서비스 워커
-const CACHE_NAME = 'panditarama-v19';
+const CACHE_NAME = 'panditarama-v20';
 const ASSETS = [
   './index.html',
   './style.css',
@@ -31,11 +31,29 @@ self.addEventListener('activate', (e) => {
   );
 });
 
-// 요청 가로채기: Cache First 전략
+// videos.js는 자주 업데이트되므로 Network First
+const NETWORK_FIRST = ['videos.js'];
+
 self.addEventListener('fetch', (e) => {
-  e.respondWith(
-    caches.match(e.request)
-      .then(cached => cached || fetch(e.request))
-      .catch(() => caches.match('./index.html'))
-  );
+  const isNetworkFirst = NETWORK_FIRST.some(f => e.request.url.includes(f));
+
+  if (isNetworkFirst) {
+    // Network First: 최신 데이터 우선, 실패 시 캐시
+    e.respondWith(
+      fetch(e.request)
+        .then(res => {
+          const clone = res.clone();
+          caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+          return res;
+        })
+        .catch(() => caches.match(e.request))
+    );
+  } else {
+    // Cache First: 정적 자산 (성능 우선)
+    e.respondWith(
+      caches.match(e.request)
+        .then(cached => cached || fetch(e.request))
+        .catch(() => caches.match('./index.html'))
+    );
+  }
 });

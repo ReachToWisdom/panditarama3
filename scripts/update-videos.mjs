@@ -303,15 +303,14 @@ async function main() {
   }`;
   }).join(',\n');
 
-  // VIDEOS 배열의 마지막 ];을 찾아서 그 앞에 삽입
-  // const VIDEOS = [ ... ]; 의 마지막 ];
+  // VIDEOS 배열의 마지막 ]을 찾아서 그 앞에 삽입
+  // videos.js에서 VIDEOS는 파일 마지막 배열이므로 lastIndexOf 사용
   const videosMarker = 'const VIDEOS = [';
   const videosStart = updatedContent.indexOf(videosMarker);
   if (videosStart >= 0) {
-    // VIDEOS 이후의 마지막 \n]; 찾기
-    const videosEndMatch = updatedContent.lastIndexOf('\n];');
+    const videosEndMatch = updatedContent.lastIndexOf('\n]');
     if (videosEndMatch >= videosStart) {
-      updatedContent = updatedContent.slice(0, videosEndMatch) + ',\n' + newEntries + '\n];';
+      updatedContent = updatedContent.slice(0, videosEndMatch) + ',\n' + newEntries + updatedContent.slice(videosEndMatch);
     }
   }
 
