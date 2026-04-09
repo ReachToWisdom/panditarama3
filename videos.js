@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 310개 영상, 26개 카테고리
-// 생성일: 2026-04-04
+// 총 313개 영상, 26개 카테고리
+// 생성일: 2026-04-09
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -34,7 +34,8 @@ const CATEGORIES = [
   "낑다다숟따",
   "니디깐다숟따",
   "위빳사나 집중수행 법문(2006)",
-  "비분류"
+  "비분류",
+  "기본다지기반"
 ]
 
 // 카테고리 순서 프리셋
@@ -3270,5 +3271,35 @@ const VIDEOS = [
     "sortKey": 0,
     "date": "",
     "order": 309
+  },
+  {
+    "id": "xeSw0JRQRS8",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "기본다지기반",
+    "sortKey": 0,
+    "date": "",
+    "order": 310
+  },
+  {
+    "id": "46eycq5IJ-Q",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "기본다지기반",
+    "sortKey": 0,
+    "date": "",
+    "order": 311
+  },
+  {
+    "id": "TAFGo3fT-vU",
+    "title": "Private video",
+    "duration": "0:00",
+    "durationSec": 0,
+    "category": "기본다지기반",
+    "sortKey": 0,
+    "date": "",
+    "order": 312
   }
 ]
