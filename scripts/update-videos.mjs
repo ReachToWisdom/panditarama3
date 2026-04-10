@@ -175,14 +175,18 @@ function extractPresets() {
   }
 }
 
-/** 기존 videos.js에서 영상 ID 목록을 순서대로 추출 */
+/** 기존 videos.js에서 VIDEOS 배열의 영상 ID만 순서대로 추출 */
 function loadExistingIds() {
   try {
     const content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
+    // VIDEOS 배열 영역만 스캔 (PRESETS 내 "id" 패턴 오염 방지)
+    const videosStart = content.indexOf('const VIDEOS = [');
+    if (videosStart < 0) return [];
+    const videosSection = content.slice(videosStart);
     const ids = [];
     const regex = /"id":\s*"([^"]+)"/g;
     let match;
-    while ((match = regex.exec(content)) !== null) {
+    while ((match = regex.exec(videosSection)) !== null) {
       ids.push(match[1]);
     }
     return ids;

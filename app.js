@@ -247,7 +247,14 @@ function renderResume() {
 /** 신규 영상 목록 반환 (새로 추가된 + 안 시청한 영상) */
 function getNewVideos() {
   const known = userData.knownVideoCount || 0;
-  if (known === 0 || known >= VIDEOS.length) return [];
+  if (known === 0) return [];
+  // 삭제로 배열이 줄어들면 known 재조정
+  if (known > VIDEOS.length) {
+    userData.knownVideoCount = VIDEOS.length;
+    saveData();
+    return [];
+  }
+  if (known >= VIDEOS.length) return [];
   return VIDEOS.slice(known).filter(v => !userData.watched[v.id]);
 }
 
