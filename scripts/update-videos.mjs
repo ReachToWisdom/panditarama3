@@ -159,16 +159,16 @@ function makeSortKey(title, date) {
 /** 기존 videos.js에서 CATEGORY_PRESETS 블록 추출 */
 function extractPresets() {
   try {
-    const content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
+    let content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
+    // CRLF → LF 정규화
+    content = content.replace(/\r\n/g, '\n');
     const start = content.indexOf('const CATEGORY_PRESETS = {');
     if (start < 0) return null;
-    // }; 또는 } 뒤에 const VIDEOS가 오는 위치 찾기
     const videosDecl = content.indexOf('const VIDEOS = [');
     if (videosDecl < 0) return null;
     // PRESETS 블록 = start ~ videosDecl 직전의 빈 줄까지
     let end = videosDecl;
-    // 앞의 공백/줄바꿈 제거
-    while (end > start && content[end - 1] === '\n') end--;
+    while (end > start && (content[end - 1] === '\n' || content[end - 1] === '\r')) end--;
     return content.slice(start, end + 1);
   } catch {
     return null;
@@ -251,12 +251,14 @@ async function main() {
 
   // 7. videos.js 전체 재생성
   const categories = [...categorySet].sort((a, b) => a.localeCompare(b, 'ko'));
-  const videos = [];
-  let order = 0;
-  for (const [id, v] of videoMap) {
+
+  // ID 기준 정렬 → API 응답 순서에 무관하게 order 안정화
+  const sortedIds = [...videoMap.keys()].sort();
+  const videos = sortedIds.map((id, i) => {
+    const v = videoMap.get(id);
     const d = details[id] || { duration: '0:00', durationSec: 0, date: '', title: v.title };
     const title = d.title || v.title;
-    videos.push({
+    return {
       id,
       title,
       duration: d.duration,
@@ -264,9 +266,9 @@ async function main() {
       category: v.category,
       sortKey: makeSortKey(title, d.date),
       date: d.date,
-      order: order++,
-    });
-  }
+      order: i,
+    };
+  });
 
   // PRESETS 블록 (기존 보존 또는 기본값)
   const presets = presetsBlock || `const CATEGORY_PRESETS = {};`;
@@ -289,11 +291,10 @@ async function main() {
     `]`,
   ].join('\n');
 
-  // 기존 파일과 비교 (변경 없으면 스킵)
+  // 변경 감지: 날짜 주석 제외하고 내용 비교
+  // ID 정렬로 순서가 안정적이므로 문자열 비교가 신뢰할 수 있음
   let existingContent = '';
-  try { existingContent = fs.readFileSync(VIDEOS_FILE, 'utf-8'); } catch {}
-
-  // 날짜 주석 제외하고 비교
+  try { existingContent = fs.readFileSync(VIDEOS_FILE, 'utf-8').replace(/\r\n/g, '\n'); } catch {}
   const strip = s => s.replace(/\/\/ 생성일: .+/, '').trim();
   if (strip(output) === strip(existingContent)) {
     console.log('\n변경 없음. 종료.');
