@@ -66,10 +66,12 @@ async function fetchPlaylistItems(playlistId) {
     if (res.error) throw new Error(`API 에러: ${JSON.stringify(res.error)}`);
     for (const item of (res.items || [])) {
       const vid = item.snippet.resourceId?.videoId;
-      if (vid) {
+      const title = item.snippet.title;
+      // 비공개/삭제된 영상 제외
+      if (vid && title !== 'Private video' && title !== 'Deleted video') {
         items.push({
           id: vid,
-          title: item.snippet.title,
+          title,
           publishedAt: item.snippet.publishedAt,
           position: item.snippet.position,
         });
