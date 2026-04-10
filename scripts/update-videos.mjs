@@ -3,9 +3,8 @@
  * GitHub Actions에서 실행 (매일 1회)
  * YouTube Data API v3 사용
  *
- * 수집 방식:
- * 1. 재생목록 기반 영상 수집 (카테고리 자동 분류)
- * 2. 채널 전체 업로드 영상 수집 (재생목록 누락분 → "비분류")
+ * 방식: 매번 전체 영상 목록을 새로 생성 (비공개→공개 전환 반영)
+ * CATEGORY_PRESETS는 기존 파일에서 보존
  */
 
 import fs from 'fs';
@@ -55,7 +54,7 @@ async function fetchPlaylists() {
   return playlists;
 }
 
-/** 재생목록의 모든 영상 ID 조회 */
+/** 재생목록의 모든 영상 ID 조회 (비공개/삭제 제외) */
 async function fetchPlaylistItems(playlistId) {
   const items = [];
   let pageToken = '';
@@ -84,14 +83,12 @@ async function fetchPlaylistItems(playlistId) {
 
 /** 채널의 전체 업로드 영상 조회 (uploads 재생목록 사용) */
 async function fetchAllUploads() {
-  // 채널 정보에서 uploads 재생목록 ID 조회
   const chRes = await apiGet(
     `/channels?part=contentDetails&id=${CHANNEL_ID}`
   );
   if (chRes.error) throw new Error(`API 에러: ${JSON.stringify(chRes.error)}`);
   const uploadsId = chRes.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
   if (!uploadsId) throw new Error('uploads 재생목록 ID를 찾을 수 없습니다');
-
   console.log(`  uploads 재생목록 ID: ${uploadsId}`);
   return await fetchPlaylistItems(uploadsId);
 }
@@ -159,226 +156,173 @@ function makeSortKey(title, date) {
   return 0;
 }
 
-// ── 기존 videos.js 파싱 ──
+/** 기존 videos.js에서 CATEGORY_PRESETS 블록 추출 */
+function extractPresets() {
+  try {
+    const content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
+    const start = content.indexOf('const CATEGORY_PRESETS = {');
+    if (start < 0) return null;
+    // }; 또는 } 뒤에 const VIDEOS가 오는 위치 찾기
+    const videosDecl = content.indexOf('const VIDEOS = [');
+    if (videosDecl < 0) return null;
+    // PRESETS 블록 = start ~ videosDecl 직전의 빈 줄까지
+    let end = videosDecl;
+    // 앞의 공백/줄바꿈 제거
+    while (end > start && content[end - 1] === '\n') end--;
+    return content.slice(start, end + 1);
+  } catch {
+    return null;
+  }
+}
 
-function loadExistingVideos() {
+/** 기존 videos.js에서 등록된 영상 ID 목록 추출 */
+function loadExistingIds() {
   try {
     const content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
     const ids = new Set();
-    const idRegex = /"id":\s*"([^"]+)"/g;
+    const regex = /"id":\s*"([^"]+)"/g;
     let match;
-    while ((match = idRegex.exec(content)) !== null) {
+    while ((match = regex.exec(content)) !== null) {
       ids.add(match[1]);
     }
-    const categories = new Set();
-    const catRegex = /"category":\s*"([^"]+)"/g;
-    while ((match = catRegex.exec(content)) !== null) {
-      categories.add(match[1]);
-    }
-    return { ids, categories, content };
-  } catch (e) {
-    console.error('videos.js 읽기 실패:', e.message);
-    return { ids: new Set(), categories: new Set(), content: '' };
+    return ids;
+  } catch {
+    return new Set();
   }
 }
 
 // ── 메인 ──
 
 async function main() {
-  console.log('YouTube 채널 영상 업데이트 시작...\n');
+  console.log('YouTube 채널 영상 전체 재생성 시작...\n');
 
-  // 1. 재생목록 조회
+  // 1. 기존 PRESETS 보존
+  const presetsBlock = extractPresets();
+  const existingIds = loadExistingIds();
+  console.log(`기존 영상 ${existingIds.size}개\n`);
+
+  // 2. 재생목록 조회
   const playlists = await fetchPlaylists();
   console.log(`재생목록 ${playlists.length}개 발견`);
 
-  // 2. 기존 데이터 로드
-  const existing = loadExistingVideos();
-  console.log(`기존 영상 ${existing.ids.size}개\n`);
-
-  // 3. 재생목록 기반 영상 수집
-  const allVideos = [];
-  const newCategories = [];
-  const existingCategoryVideos = [];
-  const playlistVideoIds = new Set(); // 재생목록에 포함된 모든 영상 ID
+  // 3. 모든 재생목록 영상 수집
+  const videoMap = new Map(); // id → { title, category, ... }
+  const categorySet = new Set();
+  const playlistVideoIds = new Set();
 
   for (const pl of playlists) {
     const items = await fetchPlaylistItems(pl.id);
-    const isNewCategory = !existing.categories.has(pl.title);
-    if (isNewCategory && items.length > 0) newCategories.push(pl.title);
-
+    if (items.length > 0) categorySet.add(pl.title);
     for (const item of items) {
       playlistVideoIds.add(item.id);
-    }
-
-    const newItems = items.filter(item => !existing.ids.has(item.id));
-    if (newItems.length > 0) {
-      for (const item of newItems) {
-        allVideos.push({ ...item, category: pl.title });
-      }
-      if (!isNewCategory) {
-        existingCategoryVideos.push({
-          category: pl.title,
-          count: newItems.length,
-          titles: newItems.map(i => i.title),
-        });
+      if (!videoMap.has(item.id)) {
+        videoMap.set(item.id, { ...item, category: pl.title });
       }
     }
-    console.log(`  ${pl.title}: ${items.length}개 (새 영상 ${newItems.length}개)${isNewCategory ? ' [신규 카테고리]' : ''}`);
+    console.log(`  ${pl.title}: ${items.length}개`);
   }
 
-  // 4. 채널 전체 업로드 영상 수집 (재생목록 누락분 찾기)
+  // 4. 채널 전체 업로드 (재생목록 누락분 → 비분류)
   console.log('\n채널 전체 업로드 영상 조회...');
   const allUploads = await fetchAllUploads();
   console.log(`  전체 업로드: ${allUploads.length}개`);
 
-  // 재생목록에도 없고 기존 videos.js에도 없는 영상 = 비분류
-  const uncategorizedItems = allUploads.filter(
-    item => !playlistVideoIds.has(item.id) && !existing.ids.has(item.id)
-  );
-
-  if (uncategorizedItems.length > 0) {
-    console.log(`  비분류 새 영상: ${uncategorizedItems.length}개`);
-    for (const item of uncategorizedItems) {
-      allVideos.push({ ...item, category: UNCATEGORIZED });
+  let uncategorizedCount = 0;
+  for (const item of allUploads) {
+    if (!playlistVideoIds.has(item.id) && !videoMap.has(item.id)) {
+      videoMap.set(item.id, { ...item, category: UNCATEGORIZED });
+      uncategorizedCount++;
     }
-    // "비분류" 카테고리가 새로 필요한지 확인
-    if (!existing.categories.has(UNCATEGORIZED) && !newCategories.includes(UNCATEGORIZED)) {
-      newCategories.push(UNCATEGORIZED);
-    }
-  } else {
-    console.log('  비분류 새 영상 없음');
+  }
+  if (uncategorizedCount > 0) {
+    categorySet.add(UNCATEGORIZED);
+    console.log(`  비분류 영상: ${uncategorizedCount}개`);
   }
 
-  // 기존 videos.js에 있지만 재생목록에 없는 영상도 체크 (정보 출력만)
-  const existingUncategorized = allUploads.filter(
-    item => !playlistVideoIds.has(item.id) && existing.ids.has(item.id)
-  );
-  if (existingUncategorized.length > 0) {
-    console.log(`  (기존 비분류 영상: ${existingUncategorized.length}개 - 이미 등록됨)`);
+  console.log(`\n공개 영상 총 ${videoMap.size}개 수집`);
+
+  // 5. 영상 상세 정보 (duration) 조회
+  const allIds = [...videoMap.keys()];
+  const details = await fetchVideoDetails(allIds);
+
+  // 6. 신규 영상 확인 (리포트용)
+  const newVideos = allIds.filter(id => !existingIds.has(id));
+  console.log(`신규 영상: ${newVideos.length}개`);
+
+  // 7. videos.js 전체 재생성
+  const categories = [...categorySet].sort((a, b) => a.localeCompare(b, 'ko'));
+  const videos = [];
+  let order = 0;
+  for (const [id, v] of videoMap) {
+    const d = details[id] || { duration: '0:00', durationSec: 0, date: '', title: v.title };
+    const title = d.title || v.title;
+    videos.push({
+      id,
+      title,
+      duration: d.duration,
+      durationSec: d.durationSec,
+      category: v.category,
+      sortKey: makeSortKey(title, d.date),
+      date: d.date,
+      order: order++,
+    });
   }
 
-  if (allVideos.length === 0) {
-    console.log('\n새 영상 없음. 종료.');
+  // PRESETS 블록 (기존 보존 또는 기본값)
+  const presets = presetsBlock || `const CATEGORY_PRESETS = {};`;
+
+  const output = [
+    `// 빤디따라마 영상 데이터 (자동 생성)`,
+    `// 총 ${videos.length}개 영상, ${categories.length}개 카테고리`,
+    `// 생성일: ${new Date().toISOString().slice(0, 10)}`,
+    `// 정렬: 제목의 강 번호 기준 (없으면 날짜순)`,
+    ``,
+    `// 기본 카테고리 (영상 수 기준)`,
+    `const CATEGORIES = [`,
+    categories.map(c => `  ${JSON.stringify(c)}`).join(',\n'),
+    `]`,
+    ``,
+    presets,
+    ``,
+    `const VIDEOS = [`,
+    videos.map(v => `  ${JSON.stringify(v)}`).join(',\n'),
+    `]`,
+  ].join('\n');
+
+  // 기존 파일과 비교 (변경 없으면 스킵)
+  let existingContent = '';
+  try { existingContent = fs.readFileSync(VIDEOS_FILE, 'utf-8'); } catch {}
+
+  // 날짜 주석 제외하고 비교
+  const strip = s => s.replace(/\/\/ 생성일: .+/, '').trim();
+  if (strip(output) === strip(existingContent)) {
+    console.log('\n변경 없음. 종료.');
     try { fs.unlinkSync(REPORT_FILE); } catch {}
     return;
   }
 
-  console.log(`\n새 영상 총 ${allVideos.length}개 발견!`);
+  fs.writeFileSync(VIDEOS_FILE, output, 'utf-8');
+  console.log(`\nvideos.js 재생성 완료 (총 ${videos.length}개)`);
 
-  // 5. 영상 상세 정보 (duration) 조회
-  const newVideoIds = allVideos.map(v => v.id);
-  const details = await fetchVideoDetails(newVideoIds);
-
-  // 6. videos.js 업데이트
-  const content = existing.content;
-  let updatedContent = content;
-
-  // CATEGORIES 배열에 새 카테고리 추가
-  if (newCategories.length > 0) {
-    const catMarker = 'const CATEGORIES = [';
-    const catStart = updatedContent.indexOf(catMarker);
-    if (catStart >= 0) {
-      // CATEGORIES 배열의 닫는 ] 찾기 (catStart 이후 첫 번째 ])
-      const catSearchFrom = catStart + catMarker.length;
-      const catEnd = updatedContent.indexOf('\n]', catSearchFrom);
-      if (catEnd >= 0) {
-        const newCatEntries = newCategories.map(c => `  "${c}"`).join(',\n');
-        updatedContent = updatedContent.slice(0, catEnd) + ',\n' + newCatEntries + updatedContent.slice(catEnd);
-      }
+  // 8. 리포트 생성
+  if (newVideos.length > 0) {
+    const lines = [
+      `## 빤디따라마 영상 업데이트\n`,
+      `- **업데이트 일시**: ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC`,
+      `- **새 영상**: ${newVideos.length}개`,
+      `- **전체 영상**: ${videos.length}개\n`,
+      `### 신규 영상\n`,
+    ];
+    for (const id of newVideos) {
+      const v = videoMap.get(id);
+      const d = details[id];
+      lines.push(`- [${v.category}] ${d?.title || v.title}`);
     }
+    lines.push(`\n---`);
+    lines.push(`사이트: https://reachtowisdom.github.io/panditarama3/`);
+    fs.writeFileSync(REPORT_FILE, lines.join('\n'), 'utf-8');
+    console.log('리포트 생성 완료');
   }
-
-  // VIDEOS 배열에 새 영상 추가
-  const newEntries = allVideos.map((v, i) => {
-    const d = details[v.id] || { duration: '0:00', durationSec: 0, date: '', title: v.title };
-    const title = d.title || v.title;
-    const sortKey = makeSortKey(title, d.date);
-    return `  {
-    "id": "${v.id}",
-    "title": ${JSON.stringify(title)},
-    "duration": "${d.duration}",
-    "durationSec": ${d.durationSec},
-    "category": ${JSON.stringify(v.category)},
-    "sortKey": ${sortKey},
-    "date": "${d.date}",
-    "order": ${existing.ids.size + i}
-  }`;
-  }).join(',\n');
-
-  // VIDEOS 배열의 마지막 ]을 찾아서 그 앞에 삽입
-  // videos.js에서 VIDEOS는 파일 마지막 배열이므로 lastIndexOf 사용
-  const videosMarker = 'const VIDEOS = [';
-  const videosStart = updatedContent.indexOf(videosMarker);
-  if (videosStart >= 0) {
-    const videosEndMatch = updatedContent.lastIndexOf('\n]');
-    if (videosEndMatch >= videosStart) {
-      updatedContent = updatedContent.slice(0, videosEndMatch) + ',\n' + newEntries + updatedContent.slice(videosEndMatch);
-    }
-  }
-
-  // 주석 업데이트
-  const newTotal = existing.ids.size + allVideos.length;
-  updatedContent = updatedContent.replace(
-    /\/\/ 총 \d+개 영상/,
-    `// 총 ${newTotal}개 영상`
-  );
-  updatedContent = updatedContent.replace(
-    /\/\/ 생성일: .+/,
-    `// 생성일: ${new Date().toISOString().slice(0, 10)}`
-  );
-
-  fs.writeFileSync(VIDEOS_FILE, updatedContent, 'utf-8');
-  console.log(`videos.js 업데이트 완료 (총 ${newTotal}개)`);
-
-  // 7. 리포트 생성
-  const report = generateReport(allVideos, newCategories, existingCategoryVideos, uncategorizedItems, newTotal);
-  fs.writeFileSync(REPORT_FILE, report, 'utf-8');
-  console.log('리포트 생성 완료');
-}
-
-function generateReport(newVideos, newCategories, existingCategoryVideos, uncategorizedItems, total) {
-  const lines = [];
-  lines.push(`## 빤디따라마 영상 업데이트\n`);
-  lines.push(`- **업데이트 일시**: ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC`);
-  lines.push(`- **새 영상**: ${newVideos.length}개`);
-  lines.push(`- **전체 영상**: ${total}개\n`);
-
-  if (newCategories.length > 0) {
-    lines.push(`### 🆕 신규 카테고리 (${newCategories.length}개)\n`);
-    lines.push(`> ⚠️ 신규 카테고리는 "설법순/초보자/수행자" 프리셋에 자동 배치되지 않습니다.`);
-    lines.push(`> 필요시 videos.js의 CATEGORY_PRESETS를 수동 편집해주세요.\n`);
-    for (const cat of newCategories) {
-      const catVideos = newVideos.filter(v => v.category === cat);
-      lines.push(`- **${cat}** (${catVideos.length}개)`);
-      for (const v of catVideos) {
-        lines.push(`  - ${v.title}`);
-      }
-    }
-    lines.push('');
-  }
-
-  if (existingCategoryVideos.length > 0) {
-    lines.push(`### 📌 기존 카테고리 새 영상\n`);
-    for (const cat of existingCategoryVideos) {
-      lines.push(`- **${cat.category}** (+${cat.count}개)`);
-      for (const t of cat.titles) {
-        lines.push(`  - ${t}`);
-      }
-    }
-    lines.push('');
-  }
-
-  if (uncategorizedItems.length > 0) {
-    lines.push(`### 📂 비분류 영상 (재생목록 미포함) (${uncategorizedItems.length}개)\n`);
-    for (const v of uncategorizedItems) {
-      lines.push(`  - ${v.title}`);
-    }
-    lines.push('');
-  }
-
-  lines.push(`---`);
-  lines.push(`사이트: https://reachtowisdom.github.io/panditarama3/`);
-  return lines.join('\n');
 }
 
 main().catch(err => {
