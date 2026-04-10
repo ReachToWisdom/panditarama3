@@ -175,19 +175,19 @@ function extractPresets() {
   }
 }
 
-/** 기존 videos.js에서 등록된 영상 ID 목록 추출 */
+/** 기존 videos.js에서 영상 ID 목록을 순서대로 추출 */
 function loadExistingIds() {
   try {
     const content = fs.readFileSync(VIDEOS_FILE, 'utf-8');
-    const ids = new Set();
+    const ids = [];
     const regex = /"id":\s*"([^"]+)"/g;
     let match;
     while ((match = regex.exec(content)) !== null) {
-      ids.add(match[1]);
+      ids.push(match[1]);
     }
     return ids;
   } catch {
-    return new Set();
+    return [];
   }
 }
 
@@ -198,8 +198,9 @@ async function main() {
 
   // 1. 기존 PRESETS 보존
   const presetsBlock = extractPresets();
-  const existingIds = loadExistingIds();
-  console.log(`기존 영상 ${existingIds.size}개\n`);
+  const existingIdList = loadExistingIds(); // 순서 보존 배열
+  const existingIdSet = new Set(existingIdList);
+  console.log(`기존 영상 ${existingIdList.length}개\n`);
 
   // 2. 재생목록 조회
   const playlists = await fetchPlaylists();
@@ -245,16 +246,28 @@ async function main() {
   const allIds = [...videoMap.keys()];
   const details = await fetchVideoDetails(allIds);
 
-  // 6. 신규 영상 확인 (리포트용)
-  const newVideos = allIds.filter(id => !existingIds.has(id));
-  console.log(`신규 영상: ${newVideos.length}개`);
+  // 6. 신규 영상 확인
+  const newVideoIds = allIds.filter(id => !existingIdSet.has(id));
+  // 삭제된 영상 (기존에 있었지만 이번에 없는 영상)
+  const removedIds = existingIdList.filter(id => !videoMap.has(id));
+  console.log(`신규 영상: ${newVideoIds.length}개`);
+  if (removedIds.length > 0) console.log(`삭제/비공개 전환: ${removedIds.length}개`);
 
   // 7. videos.js 전체 재생성
+  // 기존 영상 순서 유지 + 신규 영상은 뒤에 추가 (app.js slice 기반 신규 감지 호환)
   const categories = [...categorySet].sort((a, b) => a.localeCompare(b, 'ko'));
 
-  // ID 기준 정렬 → API 응답 순서에 무관하게 order 안정화
-  const sortedIds = [...videoMap.keys()].sort();
-  const videos = sortedIds.map((id, i) => {
+  // 기존 순서 유지 (삭제된 것 제외)
+  const orderedIds = existingIdList.filter(id => videoMap.has(id));
+  // 신규 영상은 date 역순(최신 먼저)으로 정렬 후 뒤에 추가
+  newVideoIds.sort((a, b) => {
+    const da = details[a]?.date || '';
+    const db = details[b]?.date || '';
+    return db.localeCompare(da);
+  });
+  orderedIds.push(...newVideoIds);
+
+  const videos = orderedIds.map((id, i) => {
     const v = videoMap.get(id);
     const d = details[id] || { duration: '0:00', durationSec: 0, date: '', title: v.title };
     const title = d.title || v.title;
@@ -291,13 +304,9 @@ async function main() {
     `]`,
   ].join('\n');
 
-  // 변경 감지: 날짜 주석 제외하고 내용 비교
-  // ID 정렬로 순서가 안정적이므로 문자열 비교가 신뢰할 수 있음
-  let existingContent = '';
-  try { existingContent = fs.readFileSync(VIDEOS_FILE, 'utf-8').replace(/\r\n/g, '\n'); } catch {}
-  const strip = s => s.replace(/\/\/ 생성일: .+/, '').trim();
-  if (strip(output) === strip(existingContent)) {
-    console.log('\n변경 없음. 종료.');
+  // 변경 감지: 신규/삭제 영상이 없으면 스킵
+  if (newVideoIds.length === 0 && removedIds.length === 0) {
+    console.log('\n영상 목록 변경 없음. 종료.');
     try { fs.unlinkSync(REPORT_FILE); } catch {}
     return;
   }
@@ -306,15 +315,15 @@ async function main() {
   console.log(`\nvideos.js 재생성 완료 (총 ${videos.length}개)`);
 
   // 8. 리포트 생성
-  if (newVideos.length > 0) {
+  if (newVideoIds.length > 0) {
     const lines = [
       `## 빤디따라마 영상 업데이트\n`,
       `- **업데이트 일시**: ${new Date().toISOString().slice(0, 16).replace('T', ' ')} UTC`,
-      `- **새 영상**: ${newVideos.length}개`,
+      `- **새 영상**: ${newVideoIds.length}개`,
       `- **전체 영상**: ${videos.length}개\n`,
       `### 신규 영상\n`,
     ];
-    for (const id of newVideos) {
+    for (const id of newVideoIds) {
       const v = videoMap.get(id);
       const d = details[id];
       lines.push(`- [${v.category}] ${d?.title || v.title}`);
