@@ -35,7 +35,8 @@ jobs:
             echo "changed=true" >> $GITHUB_OUTPUT
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            git add videos.js scripts/update-report.md
+            git add videos.js
+            git add scripts/update-report.md 2>/dev/null || true
             git commit -m "자동 업데이트: 새 영상 추가 $(date +%Y-%m-%d)"
             git push
             echo "videos.js 업데이트 완료"
