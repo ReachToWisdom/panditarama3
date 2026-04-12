@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 266개 영상, 27개 카테고리
-// 생성일: 2026-04-10
+// 총 267개 영상, 27개 카테고리
+// 생성일: 2026-04-12
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -190,7 +190,7 @@ const VIDEOS = [
   {"id":"4MeSMsJ6O2A","title":"[12연기] 27강 - 딴하빳짜야 우빠다낭 (1) | 빤디따라마 | 아야 마나삐까 | 2020.09.27","duration":"1:33:55","durationSec":5635,"category":"12연기","sortKey":20200027,"date":"2020-09-29","order":19},
   {"id":"4NJsHZ4H8Nk","title":"[12연기] 16강 - 난다말라 큰스님 법문에 바탕한 12연기 중간정리 | 빤디따라마 | 아야 마나삐까 | 2019.11.10","duration":"1:22:31","durationSec":4951,"category":"12연기","sortKey":20190016,"date":"2019-11-11","order":20},
   {"id":"4anJgd4VX4c","title":"마하사띠빧타나숟따 7강【 닛데사와라 】까야누빳싸나 (1) - 들숨, 날숨의 장 | 빤디따라마 | 아야 마나삐까 | 2025.06.22","duration":"1:45:39","durationSec":6339,"category":"마하사띠빧타나숟따","sortKey":20250007,"date":"2025-06-22","order":21},
-  {"id":"4gaHdMeKLoQ","title":"[위빳사나 기본다지기] (1일차 1교시) 좌선수행법 설명, 15분 좌선 및 수행보고 | 빤디따라마 | ��야 ���나삐까 | 2025.08.04","duration":"1:06:59","durationSec":4019,"category":"위빳사나 수행 입문","sortKey":20250815,"date":"2025-08-15","order":22},
+  {"id":"4gaHdMeKLoQ","title":"[위빳사나 기본다지기] (1일차 1교시) 좌선수행법 설명, 15분 좌선 및 수행보고 | 빤디따라마 | 아야 마나삐��� | 2025.08.04","duration":"1:06:59","durationSec":4019,"category":"위빳사나 수행 입문","sortKey":20250815,"date":"2025-08-15","order":22},
   {"id":"4jHqd4Ly_xg","title":"[2003-8] 인드리야를 강화시키는 9가지 요건 중 첫 번째 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.09","duration":"35:40","durationSec":2140,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210818,"date":"2021-08-18","order":23},
   {"id":"4jmaSBhSGVs","title":"[12연기] 17강 - 아난다 존자 일화로 보는 12연기의 심오한 모습 | 빤디따라마 | 아야 마나삐까 | 2020.06.28","duration":"1:41:21","durationSec":6081,"category":"12연기","sortKey":20200017,"date":"2020-07-01","order":24},
   {"id":"4rR258kg3Pc","title":"마하시 큰스님의 수받다 경 (2) (2024.08.25.)","duration":"1:45:29","durationSec":6329,"category":"수받다 경","sortKey":20240827,"date":"2024-08-27","order":25},
@@ -246,7 +246,7 @@ const VIDEOS = [
   {"id":"I2wxKgTsgwU","title":"무아인경 (11)  : 물질온과 삼법인 (Anattalakkhaṇa-sutta)","duration":"1:06:33","durationSec":3993,"category":"무아인경","sortKey":20180927,"date":"2018-09-27","order":75},
   {"id":"IU9DOO0TGq8","title":"살레카숟따 (Sallekha-sutta) 5강","duration":"1:06:19","durationSec":3979,"category":"살레카숟따","sortKey":20160005,"date":"2016-08-23","order":76},
   {"id":"IiX0YsIJSCM","title":"초전법륜경 (19) : 고성제 (2) '우빠다나칸다'오취온 (Dhammacakkappavattana·sutta)","duration":"1:16:01","durationSec":4561,"category":"초전법륜경","sortKey":20161004,"date":"2016-10-04","order":77},
-  {"id":"It5TkVGfb-I","title":"실라완따 숟��  Sīlavanta·sutta  (계행있는 이의 경) 11강","duration":"1:19:10","durationSec":4750,"category":"실라완따숟따","sortKey":20160011,"date":"2016-11-11","order":78},
+  {"id":"It5TkVGfb-I","title":"실라완따 숟따  Sīlavanta·sutta  (계행있는 이의 경) 11강","duration":"1:19:10","durationSec":4750,"category":"실라완따숟따","sortKey":20160011,"date":"2016-11-11","order":78},
   {"id":"J7bLkHN8bnE","title":"니디깐다숟따 (Nidhikaṇḍa·sutta)","duration":"1:10:08","durationSec":4208,"category":"보시, 회향","sortKey":20170817,"date":"2017-08-17","order":79},
   {"id":"J_SoXIsQ__8","title":"왐미까숟따(개미언덕의 경) 3강","duration":"37:01","durationSec":2221,"category":"왐미까숟따","sortKey":20160003,"date":"2016-09-30","order":80},
   {"id":"Jgk_lZLSwSc","title":"무아인경 (16) : 지각온(2), 형성온(1)과 삼법인 (Anattalakkhaṇa-sutta)","duration":"1:44:44","durationSec":6284,"category":"무아인경","sortKey":20181001,"date":"2018-10-01","order":81},
@@ -405,7 +405,7 @@ const VIDEOS = [
   {"id":"tTcIMHzoRrU","title":"마하시 큰스님의 수받다 경 (3) (2024.09.08.)","duration":"1:37:42","durationSec":5862,"category":"수받다 경","sortKey":20240910,"date":"2024-09-10","order":234},
   {"id":"tUfdwHiv83k","title":"바와나 디빠니 (13) : 서는 자세의 물질온에서의 무상성 3, 앉고 눕는 자세의 물질온에서의 무상성","duration":"1:28:36","durationSec":5316,"category":"[레디 사야도] 바와나 디빠니","sortKey":20160828,"date":"2016-08-28","order":235},
   {"id":"t_gGYKEITaM","title":"마하시 큰스님의 수밧다 경 (1) (2024.05.22. 붓다의 날)","duration":"1:24:29","durationSec":5069,"category":"수받다 경","sortKey":20240523,"date":"2024-05-23","order":236},
-  {"id":"tazhjkaBK3A","title":"초전법륜경 (13) : 팔���도 (2) 출가자의 생계유지, 삼마와야마 막강가 (Dhammacakkappavattana·sutta)","duration":"58:59","durationSec":3539,"category":"초전법륜경","sortKey":20160815,"date":"2016-08-15","order":237},
+  {"id":"tazhjkaBK3A","title":"초전법륜경 (13) : 팔정도 (2) 출가자의 생계유지, 삼마와야마 막강가 (Dhammacakkappavattana·sutta)","duration":"58:59","durationSec":3539,"category":"초전법륜경","sortKey":20160815,"date":"2016-08-15","order":237},
   {"id":"tpYOYlM8gbI","title":"[2003-5] 신심의 특성, 기능, 상황, 근접원인 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.06","duration":"28:33","durationSec":1713,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210623,"date":"2021-06-23","order":238},
   {"id":"u6xN7OxnDL0","title":"2. 수행력(인드리야)을 강력하고 예리하게 만드는 9가지 요건 | 2026년 빤디따라마 유소년 위빳사나 집중수행 법문(2) | 빤디따라마 | 아야 마나삐까","duration":"1:01:06","durationSec":3666,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260331,"date":"2026-03-31","order":239},
   {"id":"uDAJKowMouo","title":"[2003-4] 신심의 계발과 법의 가치 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.05","duration":"32:14","durationSec":1934,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210623,"date":"2021-06-23","order":240},
@@ -424,7 +424,7 @@ const VIDEOS = [
   {"id":"wmwTObWaj6Y","title":"붇다의 날 (1) (2016)","duration":"53:31","durationSec":3211,"category":"붇다의 날","sortKey":20160516,"date":"2016-05-16","order":253},
   {"id":"xJ9_KV3qoBE","title":"바와나 디빠니(15) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임)  2","duration":"1:45:16","durationSec":6316,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161002,"date":"2016-10-02","order":254},
   {"id":"xeSw0JRQRS8","title":"[위빳사나 기본다지기] (2일차 1교시) 공양관찰보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"30:29","durationSec":1829,"category":"위빳사나 수행 입문","sortKey":20260409,"date":"2026-04-09","order":255},
-  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학��� 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
+  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학교 ��문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
   {"id":"y1ITEpETaWM","title":"마하사띠빧타나숟따 14강【 닛데사와라 】까야누빳싸나 (8) - 삼빠자나의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2025.10.26","duration":"1:31:23","durationSec":5483,"category":"마하사띠빧타나숟따","sortKey":20250014,"date":"2025-10-31","order":257},
   {"id":"y1_WtTGpXPQ","title":"[12연기] 5강 - 아윗자빳짜야 상카라 (4) | 빤디따라마 | 아야 마나삐까 | 2019.07.28","duration":"1:36:38","durationSec":5798,"category":"12연기","sortKey":20190005,"date":"2019-07-28","order":258},
   {"id":"yFd5dFg1eKY","title":"[12연기] 18강 - 아윗자빳짜야 상카라, 상카라빳짜야 윈냐낭 | 빤디따라마 | 아야 마나삐까 | 2020.07.05","duration":"1:36:00","durationSec":5760,"category":"12연기","sortKey":20200018,"date":"2020-07-11","order":259},
@@ -433,5 +433,6 @@ const VIDEOS = [
   {"id":"zBRSlbcndfQ","title":"[12연기] 28강 - 딴하빳짜야 우빠다낭 (2) | 빤디따라마 | 아야 마나삐까 | 2020.10.11","duration":"2:08:36","durationSec":7716,"category":"12연기","sortKey":20200028,"date":"2020-10-11","order":262},
   {"id":"za_9C9gxMSU","title":"바와나 디빠니 (16) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임) 3","duration":"1:31:35","durationSec":5495,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161012,"date":"2016-10-12","order":263},
   {"id":"zltH48gt-KA","title":"아리야와사숟따  (3)","duration":"58:23","durationSec":3503,"category":"아리야와사숟따","sortKey":20160217,"date":"2016-02-17","order":264},
-  {"id":"zzmiaC6Ge5k","title":"오와다 빠띠목카 (Ovāda·pātimokkha) 2강 |  전륜성왕경","duration":"1:46:53","durationSec":6413,"category":"오와다 빠띠목카, 전륜성왕경","sortKey":20170002,"date":"2017-11-01","order":265}
+  {"id":"zzmiaC6Ge5k","title":"오와다 빠띠목카 (Ovāda·pātimokkha) 2강 |  전륜성왕경","duration":"1:46:53","durationSec":6413,"category":"오와다 빠띠목카, 전륜성왕경","sortKey":20170002,"date":"2017-11-01","order":265},
+  {"id":"4n_JeAjwOJ4","title":"[위빳사나 기본다지기] (2일차 3교시) 경행 및 경행보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"33:51","durationSec":2031,"category":"위빳사나 수행 입문","sortKey":20260411,"date":"2026-04-11","order":266}
 ]
