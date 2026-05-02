@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 267개 영상, 27개 카테고리
-// 생성일: 2026-04-12
+// 총 268개 영상, 27개 카테고리
+// 생성일: 2026-05-02
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -190,7 +190,7 @@ const VIDEOS = [
   {"id":"4MeSMsJ6O2A","title":"[12연기] 27강 - 딴하빳짜야 우빠다낭 (1) | 빤디따라마 | 아야 마나삐까 | 2020.09.27","duration":"1:33:55","durationSec":5635,"category":"12연기","sortKey":20200027,"date":"2020-09-29","order":19},
   {"id":"4NJsHZ4H8Nk","title":"[12연기] 16강 - 난다말라 큰스님 법문에 바탕한 12연기 중간정리 | 빤디따라마 | 아야 마나삐까 | 2019.11.10","duration":"1:22:31","durationSec":4951,"category":"12연기","sortKey":20190016,"date":"2019-11-11","order":20},
   {"id":"4anJgd4VX4c","title":"마하사띠빧타나숟따 7강【 닛데사와라 】까야누빳싸나 (1) - 들숨, 날숨의 장 | 빤디따라마 | 아야 마나삐까 | 2025.06.22","duration":"1:45:39","durationSec":6339,"category":"마하사띠빧타나숟따","sortKey":20250007,"date":"2025-06-22","order":21},
-  {"id":"4gaHdMeKLoQ","title":"[위빳사나 기본다지기] (1일차 1교시) 좌선수행법 설명, 15분 좌선 및 수행보고 | 빤디따라마 | 아야 마나삐��� | 2025.08.04","duration":"1:06:59","durationSec":4019,"category":"위빳사나 수행 입문","sortKey":20250815,"date":"2025-08-15","order":22},
+  {"id":"4gaHdMeKLoQ","title":"[위빳사나 기본다지기] (1일차 1교시) 좌선수행법 설명, 15분 좌선 및 수행보고 | 빤디따라��� | ���야 마나삐까 | 2025.08.04","duration":"1:06:59","durationSec":4019,"category":"위빳사나 수행 입문","sortKey":20250815,"date":"2025-08-15","order":22},
   {"id":"4jHqd4Ly_xg","title":"[2003-8] 인드리야를 강화시키는 9가지 요건 중 첫 번째 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.09","duration":"35:40","durationSec":2140,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210818,"date":"2021-08-18","order":23},
   {"id":"4jmaSBhSGVs","title":"[12연기] 17강 - 아난다 존자 일화로 보는 12연기의 심오한 모습 | 빤디따라마 | 아야 마나삐까 | 2020.06.28","duration":"1:41:21","durationSec":6081,"category":"12연기","sortKey":20200017,"date":"2020-07-01","order":24},
   {"id":"4rR258kg3Pc","title":"마하시 큰스님의 수받다 경 (2) (2024.08.25.)","duration":"1:45:29","durationSec":6329,"category":"수받다 경","sortKey":20240827,"date":"2024-08-27","order":25},
@@ -424,7 +424,7 @@ const VIDEOS = [
   {"id":"wmwTObWaj6Y","title":"붇다의 날 (1) (2016)","duration":"53:31","durationSec":3211,"category":"붇다의 날","sortKey":20160516,"date":"2016-05-16","order":253},
   {"id":"xJ9_KV3qoBE","title":"바와나 디빠니(15) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임)  2","duration":"1:45:16","durationSec":6316,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161002,"date":"2016-10-02","order":254},
   {"id":"xeSw0JRQRS8","title":"[위빳사나 기본다지기] (2일차 1교시) 공양관찰보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"30:29","durationSec":1829,"category":"위빳사나 수행 입문","sortKey":20260409,"date":"2026-04-09","order":255},
-  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학교 ��문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
+  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학교 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
   {"id":"y1ITEpETaWM","title":"마하사띠빧타나숟따 14강【 닛데사와라 】까야누빳싸나 (8) - 삼빠자나의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2025.10.26","duration":"1:31:23","durationSec":5483,"category":"마하사띠빧타나숟따","sortKey":20250014,"date":"2025-10-31","order":257},
   {"id":"y1_WtTGpXPQ","title":"[12연기] 5강 - 아윗자빳짜야 상카라 (4) | 빤디따라마 | 아야 마나삐까 | 2019.07.28","duration":"1:36:38","durationSec":5798,"category":"12연기","sortKey":20190005,"date":"2019-07-28","order":258},
   {"id":"yFd5dFg1eKY","title":"[12연기] 18강 - 아윗자빳짜야 상카라, 상카라빳짜야 윈냐낭 | 빤디따라마 | 아야 마나삐까 | 2020.07.05","duration":"1:36:00","durationSec":5760,"category":"12연기","sortKey":20200018,"date":"2020-07-11","order":259},
@@ -434,5 +434,6 @@ const VIDEOS = [
   {"id":"za_9C9gxMSU","title":"바와나 디빠니 (16) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임) 3","duration":"1:31:35","durationSec":5495,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161012,"date":"2016-10-12","order":263},
   {"id":"zltH48gt-KA","title":"아리야와사숟따  (3)","duration":"58:23","durationSec":3503,"category":"아리야와사숟따","sortKey":20160217,"date":"2016-02-17","order":264},
   {"id":"zzmiaC6Ge5k","title":"오와다 빠띠목카 (Ovāda·pātimokkha) 2강 |  전륜성왕경","duration":"1:46:53","durationSec":6413,"category":"오와다 빠띠목카, 전륜성왕경","sortKey":20170002,"date":"2017-11-01","order":265},
-  {"id":"4n_JeAjwOJ4","title":"[위빳사나 기본다지기] (2일차 3교시) 경행 및 경행보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"33:51","durationSec":2031,"category":"위빳사나 수행 입문","sortKey":20260411,"date":"2026-04-11","order":266}
+  {"id":"4n_JeAjwOJ4","title":"[위빳사나 기본다지기] (2일차 3교시) 경행 및 경행보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"33:51","durationSec":2031,"category":"위빳사나 수행 입문","sortKey":20260411,"date":"2026-04-11","order":266},
+  {"id":"HlUIM4OmYhM","title":"깨달음의 길 - 10가지 바라밀 | 빤디따라마 | 아야 마나삐까 | 2026.04.30. 웨삭데이","duration":"56:05","durationSec":3365,"category":"붇다의 날","sortKey":20260501,"date":"2026-05-01","order":267}
 ]
