@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 279개 영상, 27개 카테고리
-// 생성일: 2026-06-06
+// 총 280개 영상, 27개 카테고리
+// 생성일: 2026-06-07
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -172,7 +172,7 @@ const VIDEOS = [
   {"id":"-p5T8dOYEbo","title":"마하사띠빧타나숟따 6강【 웃데사 】사띠빧타나의 힘(번뇌의 제거), 느낌, 마음, 성품의 관찰 | 빤디따라마 | 아야 마나삐까 | 2025.05.25","duration":"1:27:03","durationSec":5223,"category":"마하사띠빧타나숟따","sortKey":20250006,"date":"2025-05-27","order":1},
   {"id":"-wBLuBJL4YQ","title":"[12연기] 25강 - 웨다나빳짜야 딴하 (2) | 빤디따라마 | 아야 마나삐까 | 2020.09.13","duration":"1:54:28","durationSec":6868,"category":"12연기","sortKey":20200025,"date":"2020-09-23","order":2},
   {"id":"0-UgPWkntQU","title":"망갈라숟따 (7) :  좋은 행위를 실천함, 친족들을 보조함, 허물이 없는 일들을 함, 불선업을 몸과 마음으로 삼감, 술 마심을 자제함 (Maṅgala·sutta)","duration":"1:52:55","durationSec":6775,"category":"망갈라숟따","sortKey":20181016,"date":"2018-10-16","order":3},
-  {"id":"0byNxqRo1Jg","title":"[2003-10] 세 가지 특성 | 미���마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.11","duration":"31:01","durationSec":1861,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210904,"date":"2021-09-04","order":4},
+  {"id":"0byNxqRo1Jg","title":"[2003-10] 세 가지 특성 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.11","duration":"31:01","durationSec":1861,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210904,"date":"2021-09-04","order":4},
   {"id":"17IywIhtHno","title":"[12연기] 11강 - 상카라빳자야 윈냐낭 (5) | 빤디따라마 | 아야 마나삐까 | 2019.09.14","duration":"1:10:27","durationSec":4227,"category":"12연기","sortKey":20190011,"date":"2019-09-28","order":5},
   {"id":"1AR4QCyInk0","title":"[12연기] 14강 - 윈냐나빳짜야 나마루빵 | 빤디따라마 | 아야 마나삐까 | 2019.10.13","duration":"1:45:32","durationSec":6332,"category":"12연기","sortKey":20190014,"date":"2019-10-15","order":6},
   {"id":"1MGji7lvCME","title":"살레카숟따 (Sallekha-sutta) 1강","duration":"1:10:35","durationSec":4235,"category":"살레카숟따","sortKey":20160001,"date":"2016-10-17","order":7},
@@ -424,7 +424,7 @@ const VIDEOS = [
   {"id":"wmwTObWaj6Y","title":"붇다의 날 (1) (2016)","duration":"53:31","durationSec":3211,"category":"붇다의 날","sortKey":20160516,"date":"2016-05-16","order":253},
   {"id":"xJ9_KV3qoBE","title":"바와나 디빠니(15) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임)  2","duration":"1:45:16","durationSec":6316,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161002,"date":"2016-10-02","order":254},
   {"id":"xeSw0JRQRS8","title":"[위빳사나 기본다지기] (2일차 1교시) 공양관찰보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"30:29","durationSec":1829,"category":"위빳사나 수행 입문","sortKey":20260409,"date":"2026-04-09","order":255},
-  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학교 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
+  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학�� 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
   {"id":"y1ITEpETaWM","title":"마하사띠빧타나숟따 14강【 닛데사와라 】까야누빳싸나 (8) - 삼빠자나의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2025.10.26","duration":"1:31:23","durationSec":5483,"category":"마하사띠빧타나숟따","sortKey":20250014,"date":"2025-10-31","order":257},
   {"id":"y1_WtTGpXPQ","title":"[12연기] 5강 - 아윗자빳짜야 상카라 (4) | 빤디따라마 | 아야 마나삐까 | 2019.07.28","duration":"1:36:38","durationSec":5798,"category":"12연기","sortKey":20190005,"date":"2019-07-28","order":258},
   {"id":"yFd5dFg1eKY","title":"[12연기] 18강 - 아윗자빳짜야 상카라, 상카라빳짜야 윈냐낭 | 빤디따라마 | 아야 마나삐까 | 2020.07.05","duration":"1:36:00","durationSec":5760,"category":"12연기","sortKey":20200018,"date":"2020-07-11","order":259},
@@ -445,6 +445,7 @@ const VIDEOS = [
   {"id":"JGVB-MZbCIg","title":"불법의 위험 예방의 법 (2) | 빤디따라마 | 아야 마나삐까 | 2026.05.10. 정기법회","duration":"1:05:27","durationSec":3927,"category":"특별법회","sortKey":20260602,"date":"2026-06-02","order":274},
   {"id":"HuHxNQT_Mio","title":"[특별법회] 수행의 바탕이 되는 수행자의 자세 | 미얀마 빤디따라마 본원 | 아야 와라냐니 | 2026.5.15","duration":"53:02","durationSec":3182,"category":"특별법회","sortKey":20260604,"date":"2026-06-04","order":275},
   {"id":"btoI-xUrbPA","title":"[특별법회] 세 가지 선업 - 보시·지계·수행  | 미얀마  빤디따라마 본원  | 아야 깐짜나 | 2026.5.14","duration":"52:36","durationSec":3156,"category":"특별법회","sortKey":20260604,"date":"2026-06-04","order":276},
-  {"id":"cPENhp_-y_k","title":"영상 아야 윗싣타냐니","duration":"35:59","durationSec":2159,"category":"특별법회","sortKey":20260605,"date":"2026-06-05","order":277},
-  {"id":"Hd9cN0mIGdA","title":"영상 개원법회 아야 위말라냐니","duration":"59:38","durationSec":3578,"category":"특별법회","sortKey":20260605,"date":"2026-06-05","order":278}
+  {"id":"cPENhp_-y_k","title":"[특별법회] 새로운 사원이나 장소에서 해야 할 일(선업과 선업의 회향의 이익) | 미얀마 빤디따라마 본원 | 아야 윗싣타냐니 (2026.5.23)","duration":"35:59","durationSec":2159,"category":"특별법회","sortKey":20260606,"date":"2026-06-06","order":277},
+  {"id":"SgRAuWUKVfQ","title":"[봉화 수행처 건립 회향 특별법회] 사원보시의 이익과 밤낮으로 증장되는 종류의 선업 |  미얀마 빤디따라마 본원 | 아야 위말라냐니 | 2026.5.24.","duration":"1:06:29","durationSec":3989,"category":"특별법회","sortKey":20260606,"date":"2026-06-06","order":278},
+  {"id":"LVh0IZC3FM8","title":"[특별법회] 수행자의 다섯 가지 요건 | 밀린다왕 문경의 닭의 비유 | 미얀마 빤디따라마 본원 | 아야 위말라냐니 | 2026.5.25","duration":"39:29","durationSec":2369,"category":"특별법회","sortKey":20260606,"date":"2026-06-06","order":279}
 ]
