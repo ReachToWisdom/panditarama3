@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 282개 영상, 27개 카테고리
-// 생성일: 2026-06-13
+// 총 283개 영상, 27개 카테고리
+// 생성일: 2026-06-14
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -369,7 +369,7 @@ const VIDEOS = [
   {"id":"k_Y1-A-8gfY","title":"초전법륜경 (1) : 초전법륜경이 무엇인가?  (Dhammacakkappavattana·sutta)","duration":"1:04:40","durationSec":3880,"category":"초전법륜경","sortKey":20160720,"date":"2016-07-20","order":198},
   {"id":"lK6uhGS66NE","title":"[12연기] 20강 - 살라야따나빳짜야 팟쏘 | 빤디따라마 | 아야 마나삐까 | 2020.07.19","duration":"1:22:46","durationSec":4966,"category":"12연기","sortKey":20200020,"date":"2020-07-19","order":199},
   {"id":"lUOuweXDIV4","title":"바와나 디빠니 (7) : 표상에 항상하고 확고한 실체가 없는 모습 2 | 아담미까숟따 | 속임수(완짜나) 1","duration":"1:37:20","durationSec":5840,"category":"[레디 사야도] 바와나 디빠니","sortKey":20160216,"date":"2016-02-16","order":200},
-  {"id":"lVPo9EXveyo","title":"바와나 디빠니 (9) : 가는 자세의 물질온에서의 무상성 2 | 속임수 3","duration":"1:29:19","durationSec":5359,"category":"[레디 사야도] 바와나 디빠니","sortKey":20160410,"date":"2016-04-10","order":201},
+  {"id":"lVPo9EXveyo","title":"��와나 ��빠니 (9) : 가는 자세의 물질온에서의 무상성 2 | 속임수 3","duration":"1:29:19","durationSec":5359,"category":"[레디 사야도] 바와나 디빠니","sortKey":20160410,"date":"2016-04-10","order":201},
   {"id":"lg6dai5LMuY","title":"아리야와사숟따 (4)","duration":"1:37:38","durationSec":5858,"category":"아리야와사숟따","sortKey":20160217,"date":"2016-02-17","order":202},
   {"id":"lrKx_3b3xuk","title":"[12연기] 24강 - 웨다나빳짜야 딴하 (1) | 빤디따라마 | 아야 마나삐까 | 2020.08.23","duration":"1:26:14","durationSec":5174,"category":"12연기","sortKey":20200024,"date":"2020-08-24","order":203},
   {"id":"lvR3GabnnSk","title":"살레카숟따 (Sallekha-sutta) 2강","duration":"1:20:19","durationSec":4819,"category":"살레카숟따","sortKey":20160002,"date":"2016-10-17","order":204},
@@ -424,7 +424,7 @@ const VIDEOS = [
   {"id":"wmwTObWaj6Y","title":"붇다의 날 (1) (2016)","duration":"53:31","durationSec":3211,"category":"붇다의 날","sortKey":20160516,"date":"2016-05-16","order":253},
   {"id":"xJ9_KV3qoBE","title":"바와나 디빠니(15) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임)  2","duration":"1:45:16","durationSec":6316,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161002,"date":"2016-10-02","order":254},
   {"id":"xeSw0JRQRS8","title":"[위빳사나 기본다지기] (2일차 1교시) 공양관찰보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"30:29","durationSec":1829,"category":"위빳사나 수행 입문","sortKey":20260409,"date":"2026-04-09","order":255},
-  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교���교 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
+  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학교 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
   {"id":"y1ITEpETaWM","title":"마하사띠빧타나숟따 14강【 닛데사와라 】까야누빳싸나 (8) - 삼빠자나의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2025.10.26","duration":"1:31:23","durationSec":5483,"category":"마하사띠빧타나숟따","sortKey":20250014,"date":"2025-10-31","order":257},
   {"id":"y1_WtTGpXPQ","title":"[12연기] 5강 - 아윗자빳짜야 상카라 (4) | 빤디따라마 | 아야 마나삐까 | 2019.07.28","duration":"1:36:38","durationSec":5798,"category":"12연기","sortKey":20190005,"date":"2019-07-28","order":258},
   {"id":"yFd5dFg1eKY","title":"[12연기] 18강 - 아윗자빳짜야 상카라, 상카라빳짜야 윈냐낭 | 빤디따라마 | 아야 마나삐까 | 2020.07.05","duration":"1:36:00","durationSec":5760,"category":"12연기","sortKey":20200018,"date":"2020-07-11","order":259},
@@ -449,5 +449,6 @@ const VIDEOS = [
   {"id":"SgRAuWUKVfQ","title":"[봉화 수행처 건립 회향 특별법회] 사원보시의 이익과 밤낮으로 증장되는 종류의 선업 |  미얀마 빤디따라마 본원 | 아야 위말라냐니 | 2026.5.24.","duration":"1:06:29","durationSec":3989,"category":"특별법회","sortKey":20260606,"date":"2026-06-06","order":278},
   {"id":"MFgdOMKAc44","title":"[특별법회] 수행자의 다섯 가지 요건 - 밀린다왕 문경의 닭의 비유 | 미얀마 빤디따라마 본원 | 아야 위말라냐니 | 2026.5.25","duration":"38:38","durationSec":2318,"category":"특별법회","sortKey":20260607,"date":"2026-06-07","order":279},
   {"id":"XwpO9hx5vcM","title":"[특별법회] 사띠빧타나 위빳사나 수행 질의응답 (1) | 아야 위말라냐니 |  2026.5.25 [자막켜기:화면터치-CC누르기]","duration":"1:42:05","durationSec":6125,"category":"특별법회","sortKey":20260611,"date":"2026-06-11","order":280},
-  {"id":"F3xq8aHJMrE","title":"[특별법회] 사띠빧타나 위빳사나 수행 질의응답 (2) | 아야 위말라냐니 |  2026.5.30 [자막켜기:화면터치-CC누르기]","duration":"1:31:19","durationSec":5479,"category":"특별법회","sortKey":20260612,"date":"2026-06-12","order":281}
+  {"id":"F3xq8aHJMrE","title":"[특별법회] 사띠빧타나 위빳사나 수행 질의응답 (2) | 아야 위말라냐니 |  2026.5.30 [자막켜기:화면터치-CC누르기]","duration":"1:31:19","durationSec":5479,"category":"특별법회","sortKey":20260612,"date":"2026-06-12","order":281},
+  {"id":"FkkvbLveaOQ","title":"[특별법회] 불선업이 없이 마음에 선업만을 발생시키는 방법 4가지 | 아야 위말라냐니 | 2026.5.31 [자막켜기:화면터치-CC누르기]","duration":"1:19:15","durationSec":4755,"category":"특별법회","sortKey":20260613,"date":"2026-06-13","order":282}
 ]
