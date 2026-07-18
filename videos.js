@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
 // 총 284개 영상, 27개 카테고리
-// 생성일: 2026-07-17
+// 생성일: 2026-07-18
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -15,7 +15,6 @@ const CATEGORIES = [
   "보시, 회향",
   "붇다의 날",
   "비분류",
-  "빠릳��빠리깜마",
   "빤디따라마 유소년 위빳사나 불교학교",
   "빤디따라마 큰스님(아신 빤디따 비왐사 사야도)",
   "살레카숟따",
@@ -31,7 +30,8 @@ const CATEGORIES = [
   "초전법륜경",
   "추모법회",
   "특별법회",
-  "헤마와따경"
+  "헤마와따경",
+  "���릳따빠리깜마"
 ]
 
 const CATEGORY_PRESETS = {
@@ -198,7 +198,7 @@ const VIDEOS = [
   {"id":"5JIDRUD2Isk","title":"살레카숟따 (Sallekha-sutta) 13강","duration":"1:02:23","durationSec":3743,"category":"살레카숟따","sortKey":20160013,"date":"2016-09-14","order":27},
   {"id":"5YBq01Azhmk","title":"초전법륜경 (18) : 고성제 (1) 자띠(jāti, 생)로 시작되는 고통의 성품 (Dhammacakkappavattana·sutta)","duration":"1:12:52","durationSec":4372,"category":"초전법륜경","sortKey":20161004,"date":"2016-10-04","order":28},
   {"id":"5ddDLVry_Ew","title":"실라완따 숟따  Sīlavanta·sutta  (계행있는 이의 경) 15강","duration":"1:25:22","durationSec":5122,"category":"실라완따숟따","sortKey":20160015,"date":"2016-11-13","order":29},
-  {"id":"5jM4-xnN0ck","title":"무아인경 (9) : 무상과 고의 성품을 통해 무���를 보이시는 모습 (Anattalakkhaṇa-sutta)","duration":"1:59:25","durationSec":7165,"category":"무아인경","sortKey":20180904,"date":"2018-09-04","order":30},
+  {"id":"5jM4-xnN0ck","title":"무아인경 (9) : 무상과 고의 성품을 통해 ���아를 보이시는 모습 (Anattalakkhaṇa-sutta)","duration":"1:59:25","durationSec":7165,"category":"무아인경","sortKey":20180904,"date":"2018-09-04","order":30},
   {"id":"6CzHcD7vG-Q","title":"3. 빤디따라마 유소년 위빳사나 불교학교 법문  | 아야 마나삐까 | 2025.08.01.","duration":"41:53","durationSec":2513,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":31},
   {"id":"6lOsfj0KoT8","title":"제5차 정기총회 법문 | 사단법인 빤디따라마 근본불교 수행센터  (2024.06.09)","duration":"18:53","durationSec":1133,"category":"비분류","sortKey":20240610,"date":"2024-06-10","order":32},
   {"id":"6nVkDmDW6Mc","title":"헤마와따숟따 (Hemavata·sutta) 7강","duration":"1:30:27","durationSec":5427,"category":"헤마와따경","sortKey":20170007,"date":"2017-10-05","order":33},
@@ -304,7 +304,7 @@ const VIDEOS = [
   {"id":"VY0-2DUwS8k","title":"초전법륜경 (23) : 도성제 (1) 도성제와 팔정도 (Dhammacakkappavattana·sutta)","duration":"1:17:58","durationSec":4678,"category":"초전법륜경","sortKey":20161010,"date":"2016-10-10","order":133},
   {"id":"VlBwUuSjUKw","title":"독사에의 비유경 (Āsīvisopama·sutta 아시위소빠마숟따) 2강","duration":"1:04:29","durationSec":3869,"category":"아시위소빠마숟따","sortKey":20180002,"date":"2018-03-26","order":134},
   {"id":"WrnsM9awr24","title":"초전법륜경 (5) : 붓다가 되신 이후 49일간 아라한의 과의 지혜를 누리고 법을 숙고하신 모습  (Dhammacakkappavattana·sutta)","duration":"1:00:35","durationSec":3635,"category":"초전법륜경","sortKey":20160728,"date":"2016-07-28","order":135},
-  {"id":"X0U6vtqKZqw","title":"빠릳따빠리깜마 (Parittaparikamma) 2강","duration":"1:30:51","durationSec":5451,"category":"빠릳��빠리깜마","sortKey":20180002,"date":"2018-06-17","order":136},
+  {"id":"X0U6vtqKZqw","title":"빠릳따빠리깜마 (Parittaparikamma) 2강","duration":"1:30:51","durationSec":5451,"category":"���릳따빠리깜마","sortKey":20180002,"date":"2018-06-17","order":136},
   {"id":"XO3Ls9DM41I","title":"실라완따 숟따  Sīlavanta·sutta  (계행있는 이의 경) 7강","duration":"1:03:38","durationSec":3818,"category":"실라완따숟따","sortKey":20160007,"date":"2016-11-05","order":137},
   {"id":"XT1h_VNJ26Y","title":"[12연기] 9강 - 윈냐나빳자야 나마루빵 (수행자가 지켜야 할 6가지) | 빤디따라마 | 아야 마나삐까 | 2019.09.12","duration":"1:13:34","durationSec":4414,"category":"12연기","sortKey":20190009,"date":"2019-09-28","order":138},
   {"id":"X_zxuxjvvXk","title":"헤마와따숟따 (Hemavata·sutta) 12강","duration":"1:03:10","durationSec":3790,"category":"헤마와따경","sortKey":20170012,"date":"2017-10-09","order":139},
@@ -362,7 +362,7 @@ const VIDEOS = [
   {"id":"iBNL0uO45pU","title":"헤마와따숟따 (Hemavata·sutta) 1강","duration":"1:20:40","durationSec":4840,"category":"헤마와따경","sortKey":20170001,"date":"2017-08-28","order":191},
   {"id":"ilcINDLsreE","title":"빤디따라마 큰스님 3주기 추모법회 (2019)","duration":"1:00:15","durationSec":3615,"category":"추모법회","sortKey":20190417,"date":"2019-04-17","order":192},
   {"id":"iqncOlOeTFM","title":"[12연기] 43강 - 마하시 큰스님의 12연기 도표와 부처님 공덕 | 빤디따라마 | 아야 마나삐까 | 2021.10.31","duration":"1:48:05","durationSec":6485,"category":"12연기","sortKey":20210043,"date":"2021-11-06","order":193},
-  {"id":"jKM-U207wEs","title":"빠릳따빠리깜마 (Parittaparikamma) 1강","duration":"1:52:48","durationSec":6768,"category":"빠릳��빠리깜마","sortKey":20180001,"date":"2018-06-17","order":194},
+  {"id":"jKM-U207wEs","title":"빠릳따빠리깜마 (Parittaparikamma) 1강","duration":"1:52:48","durationSec":6768,"category":"���릳따빠리깜마","sortKey":20180001,"date":"2018-06-17","order":194},
   {"id":"jh6h5zStfDI","title":"무아인경 (21) : 의식을 11가지로 관하는 모습 (Anattalakkhaṇa-sutta)","duration":"2:18:29","durationSec":8309,"category":"무아인경","sortKey":20181029,"date":"2018-10-29","order":195},
   {"id":"k4qr7rbEsT4","title":"초전법륜경 (15) :  팔정도 (4) 삼마사마디 막강가 (Dhammacakkappavattana·sutta)","duration":"1:00:05","durationSec":3605,"category":"초전법륜경","sortKey":20160922,"date":"2016-09-22","order":196},
   {"id":"kOmQWK4p-3g","title":"[12연기] 42강 - 12연기와 세 번째 아라한 공덕 (보충해설) | 빤디따라마 | 아야 마나삐까 | 2021.09.26","duration":"1:51:10","durationSec":6670,"category":"12연기","sortKey":20210042,"date":"2021-09-30","order":197},
@@ -420,11 +420,11 @@ const VIDEOS = [
   {"id":"wA9PhhABAa4","title":"축복경 (4) :  견문이 많음, 기술을 습득함, 자기 수행인 율을 배우고 훈련함, 말을 훌륭하게 함 (Maṅgala·sutta  망갈라숟따)","duration":"2:07:35","durationSec":7655,"category":"망갈라숟따(축복경)","sortKey":20180723,"date":"2018-07-23","order":249},
   {"id":"wJ069vR4V7U","title":"2024 빤디따라마 큰스님(아신 빤디따비왐사) 추모법회 (삼보와 스승의 은덕)","duration":"47:36","durationSec":2856,"category":"추모법회","sortKey":20240419,"date":"2024-04-19","order":250},
   {"id":"wQkQxznaCkQ","title":"[12연기] 2강 - 아윗자빳짜야 상카라 (1) | 빤디따라마 | 아야 마나삐까 | 2019.06.09","duration":"1:29:20","durationSec":5360,"category":"12연기","sortKey":20190002,"date":"2019-07-01","order":251},
-  {"id":"wW21c9GBGnQ","title":"빠릳따빠리깜마 (Parittaparikamma) 3강","duration":"1:06:51","durationSec":4011,"category":"빠릳��빠리깜마","sortKey":20190003,"date":"2019-05-22","order":252},
+  {"id":"wW21c9GBGnQ","title":"빠릳따빠리깜마 (Parittaparikamma) 3강","duration":"1:06:51","durationSec":4011,"category":"���릳따빠리깜마","sortKey":20190003,"date":"2019-05-22","order":252},
   {"id":"wmwTObWaj6Y","title":"붇다의 날 (1) (2016)","duration":"53:31","durationSec":3211,"category":"붇다의 날","sortKey":20160516,"date":"2016-05-16","order":253},
   {"id":"xJ9_KV3qoBE","title":"바와나 디빠니(15) : 의식온의 무상성 (고통스런 느낌의 신식의 네 가지 정신온을 보임)  2","duration":"1:45:16","durationSec":6316,"category":"[레디 사야도] 바와나 디빠니","sortKey":20161002,"date":"2016-10-02","order":254},
   {"id":"xeSw0JRQRS8","title":"[위빳사나 기본다지기] (2일차 1교시) 공양관찰보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.05","duration":"30:29","durationSec":1829,"category":"위빳사나 수행 입문","sortKey":20260409,"date":"2026-04-09","order":255},
-  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학교 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
+  {"id":"xf__Su7padI","title":"4. 빤디따라마 유소년 위빳사나 불교학��� 법문  | 아야 마나삐까 | 2025.08.02.","duration":"46:40","durationSec":2800,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250819,"date":"2025-08-19","order":256},
   {"id":"y1ITEpETaWM","title":"마하사띠빧타나숟따 14강【 닛데사와라 】까야누빳싸나 (8) - 삼빠자나의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2025.10.26","duration":"1:31:23","durationSec":5483,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20250014,"date":"2025-10-31","order":257},
   {"id":"y1_WtTGpXPQ","title":"[12연기] 5강 - 아윗자빳짜야 상카라 (4) | 빤디따라마 | 아야 마나삐까 | 2019.07.28","duration":"1:36:38","durationSec":5798,"category":"12연기","sortKey":20190005,"date":"2019-07-28","order":258},
   {"id":"yFd5dFg1eKY","title":"[12연기] 18강 - 아윗자빳짜야 상카라, 상카라빳짜야 윈냐낭 | 빤디따라마 | 아야 마나삐까 | 2020.07.05","duration":"1:36:00","durationSec":5760,"category":"12연기","sortKey":20200018,"date":"2020-07-11","order":259},
@@ -451,5 +451,5 @@ const VIDEOS = [
   {"id":"XwpO9hx5vcM","title":"[특별법회] 사띠빧타나 위빳사나 수행 질의응답 (1) | 아야 위말라냐니 |  2026.5.25 [자막켜기:화면터치-CC누르기]","duration":"1:42:05","durationSec":6125,"category":"특별법회","sortKey":20260611,"date":"2026-06-11","order":280},
   {"id":"F3xq8aHJMrE","title":"[특별법회] 사띠빧타나 위빳사나 수행 질의응답 (2) | 아야 위말라냐니 |  2026.5.30 [자막켜기:화면터치-CC누르기]","duration":"1:31:19","durationSec":5479,"category":"특별법회","sortKey":20260612,"date":"2026-06-12","order":281},
   {"id":"FkkvbLveaOQ","title":"[특별법회] 불선업이 없이 마음에 선업만을 발생시키는 방법 4가지 | 아야 위말라냐니 | 2026.5.31 [자막켜기:화면터치-CC누르기]","duration":"1:19:15","durationSec":4755,"category":"특별법회","sortKey":20260613,"date":"2026-06-13","order":282},
-  {"id":"A7vfv5DiWkU","title":"불법의 위험 예방의 법 (3) | 빤디따라마 | 아야 마나삐까 | 2026.07.12. 정기법회","duration":"1:42:24","durationSec":6144,"category":"특별법회","sortKey":20260716,"date":"2026-07-16","order":283}
+  {"id":"8218vkH2Rbk","title":"영상 봉화 법문3 최종","duration":"1:42:24","durationSec":6144,"category":"특별법회","sortKey":20260718,"date":"2026-07-18","order":283}
 ]
