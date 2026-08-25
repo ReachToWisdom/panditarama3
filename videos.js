@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 286개 영상, 27개 카테고리
-// 생성일: 2026-08-10
+// 총 288개 영상, 27개 카테고리
+// 생성일: 2026-08-25
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -276,7 +276,7 @@ const VIDEOS = [
   {"id":"R2YA3F1Xr8w","title":"1. 계율 | 2026년 빤디따라마 유소년 위빳사나 집중수행 입제법문  | 빤디따라마 | 아야 마나삐까","duration":"43:45","durationSec":2625,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260331,"date":"2026-03-31","order":105},
   {"id":"R84NWzpfMcw","title":"살레카숟따 (Sallekha-sutta) 8강","duration":"1:05:21","durationSec":3921,"category":"살레카숟따","sortKey":20160008,"date":"2016-08-30","order":106},
   {"id":"RCTWOiuPV7Y","title":"[12연기] 39강 - 12연기 분석 | 빤디따라마 | 아야 마나삐까 | 2021.07.25","duration":"1:14:18","durationSec":4458,"category":"12연기","sortKey":20210039,"date":"2021-07-28","order":107},
-  {"id":"RRQjSWTZE1Y","title":"���아인경 (23) : 성인의 도의 지혜를 얻는 모습 (Anattalakkhaṇa-sutta)","duration":"2:08:53","durationSec":7733,"category":"무아인경","sortKey":20181112,"date":"2018-11-12","order":108},
+  {"id":"RRQjSWTZE1Y","title":"무아인경 (23) : 성인의 도의 지혜를 얻는 모습 (Anattalakkhaṇa-sutta)","duration":"2:08:53","durationSec":7733,"category":"무아인경","sortKey":20181112,"date":"2018-11-12","order":108},
   {"id":"Rcrm15x4cME","title":"축복경 (3) :  적절한 장소에 지냄, 과거의 행한 선업이 있음, 몸과 마음을 훌륭히 둠 (Maṅgala·sutta  망갈라숟따)","duration":"1:19:41","durationSec":4781,"category":"축복경(망갈라숟따)","sortKey":20180709,"date":"2018-07-09","order":109},
   {"id":"Re_U6338AKw","title":"바와나 디빠니 (3) : 물질 안에 생기는 무상을 보는 지혜(사대요소로의 설명) | 출가자에게 재가자가 예를 올려야 하는 이유 (밀린다 왕 문경)","duration":"1:46:07","durationSec":6367,"category":"[레디 사야도] 바와나 디빠니","sortKey":20160216,"date":"2016-02-16","order":110},
   {"id":"S8dKR9CWHRM","title":"마하사띠빧타나숟따 4강【 서론 】 사띠빧타나의 세 가지 의미와 네 가지 사띠빧타나 | 빤디따라마 | 아야 마나삐까 | 2025.04.13","duration":"1:20:29","durationSec":4829,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20250004,"date":"2025-04-18","order":111},
@@ -288,7 +288,7 @@ const VIDEOS = [
   {"id":"THT2zBp37M8","title":"대념처경 (Mahāsatipatthāna·sutta 마하사띠빧타나숟따) 3강","duration":"57:22","durationSec":3442,"category":"대념처경","sortKey":20160003,"date":"2016-05-12","order":117},
   {"id":"TOi88XoLjs4","title":"[12연기] 4강 - 아윗자빳짜야 상카라 (3) | 빤디따라마 | 아야 마나삐까 | 2019.07.14","duration":"1:35:09","durationSec":5709,"category":"12연기","sortKey":20190004,"date":"2019-07-17","order":118},
   {"id":"TTcbe3gJCpw","title":"[12연기] 21강 - 아윗짜빳짜야 상카라 ~ 팟사빳짜야 웨다나 | 빤디따라마 | 아야 마나삐까 | 2020.07.26","duration":"1:40:41","durationSec":6041,"category":"12연기","sortKey":20200021,"date":"2020-08-11","order":119},
-  {"id":"TXail7GkAVQ","title":"[12���기] 40강 - 12연기 요약 | 빤디따라마 | 아야 마나삐까 | 2021.08.22","duration":"1:48:46","durationSec":6526,"category":"12연기","sortKey":20210040,"date":"2021-08-28","order":120},
+  {"id":"TXail7GkAVQ","title":"[12연기] 40강 - 12연기 요약 | 빤디따라마 | 아야 마나삐까 | 2021.08.22","duration":"1:48:46","durationSec":6526,"category":"12연기","sortKey":20210040,"date":"2021-08-28","order":120},
   {"id":"Ti1tp865z3w","title":"[위빳사나 기본다지기] (1일차 2교시) 좌선30분 및 수행보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.04","duration":"1:21:18","durationSec":4878,"category":"사띠빧타나 수행 입문","sortKey":20260310,"date":"2026-03-10","order":121},
   {"id":"U3_OJJ468dA","title":"[12연기] 26강 - 웨다나빳짜야 딴하 (3) | 빤디따라마 | 아야 마나삐까 | 2020.09.20","duration":"1:59:28","durationSec":7168,"category":"12연기","sortKey":20200026,"date":"2020-09-30","order":122},
   {"id":"UC9RHZ0ceGE","title":"2. 빤디따라마 유소년 위빳사나 불교학교 법문 | 아야 마나삐까 |  2025.07.31.","duration":"39:14","durationSec":2354,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20250818,"date":"2025-08-18","order":123},
@@ -453,5 +453,7 @@ const VIDEOS = [
   {"id":"FkkvbLveaOQ","title":"[특별법회] 불선업이 없이 마음에 선업만을 발생시키는 방법 4가지 | 아야 위말라냐니 | 2026.5.31 [자막켜기:화면터치-CC누르기]","duration":"1:19:15","durationSec":4755,"category":"특별법회","sortKey":20260613,"date":"2026-06-13","order":282},
   {"id":"8218vkH2Rbk","title":"불법의 위험 예방의 법 (3) | 빤디따라마 | 아야 마나삐까 | 2026.07.12. 정기법회","duration":"1:42:24","durationSec":6144,"category":"특별법회","sortKey":20260719,"date":"2026-07-19","order":283},
   {"id":"Gqnbf8XApxs","title":"2026 빤디따라마 개원법회 기념 동영상","duration":"21:10","durationSec":1270,"category":"특별법회","sortKey":20260720,"date":"2026-07-20","order":284},
-  {"id":"q09nn2iZDz8","title":"마하사띠빧타나숟따 15강【 닛데사와라 】까야누빳싸나 (9) - 혐오스러운 것으로 마음에 두는 방법의 장 (1) | 빤디따라마 | 아야 마나삐까 | 2026.07.26","duration":"1:41:59","durationSec":6119,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260015,"date":"2026-08-09","order":285}
+  {"id":"q09nn2iZDz8","title":"마하사띠빧타나숟따 15강【 닛데사와라 】까야누빳싸나 (9) - 혐오스러운 것으로 마음에 두는 방법의 장 (1) | 빤디따라마 | 아야 마나삐까 | 2026.07.26","duration":"1:41:59","durationSec":6119,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260015,"date":"2026-08-09","order":285},
+  {"id":"vxTCr1M__xk","title":"마하사띠빧타나숟따 16강【 닛데사와라 】까야누빳싸나 (10) - 혐오스러운 것으로 마음에 두는 방법의 장 (2) | 빤디따라마 | 아야 마나삐까 | 2026.08.09","duration":"2:09:05","durationSec":7745,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260016,"date":"2026-08-24","order":286},
+  {"id":"VnXU-R9fAL4","title":"[위빳사나 기본다지기] (4일차 1교시) 삼배 및 일상관찰 보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.07","duration":"42:05","durationSec":2525,"category":"사띠빧타나 수행 입문","sortKey":20260810,"date":"2026-08-10","order":287}
 ]
