@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 298개 영상, 28개 카테고리
-// 생성일: 2026-10-16
+// 총 303개 영상, 28개 카테고리
+// 생성일: 2026-10-17
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -18,7 +18,7 @@ const CATEGORIES = [
   "붇다의 날",
   "비분류",
   "빤디따라마 유소년 위빳사나 불교학교",
-  "빤디따라마 큰스님(아신 빤디��� 비왐사 사야도)",
+  "빤디따라마 큰스님(아신 빤디따 비왐사 사야도)",
   "사띠빧타나 수행 입문",
   "살레카숟따",
   "수받다 경",
@@ -283,8 +283,8 @@ const VIDEOS = [
   {"id":"S8dKR9CWHRM","title":"마하사띠빧타나숟따 4강【 서론 】 사띠빧타나의 세 가지 의미와 네 가지 사띠빧타나 | 빤디따라마 | 아야 마나삐까 | 2025.04.13","duration":"1:20:29","durationSec":4829,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20250004,"date":"2025-04-18","order":111},
   {"id":"SAsqmM1ZJxk","title":"초전법륜경 (20) : 집성제 (1) '뽀노 바위까' 13생을 윤회한 암퇘지였던 수마나테리 비구니 이야기  (Dhammacakkappavattana·sutta)","duration":"1:09:18","durationSec":4158,"category":"초전법륜경","sortKey":20160930,"date":"2016-09-30","order":112},
   {"id":"SFAsPW9CrLU","title":"실라완따 숟따  Sīlavanta·sutta  (계행있는 이의 경) 5강","duration":"1:12:42","durationSec":4362,"category":"실라완따숟따","sortKey":20160005,"date":"2016-10-30","order":113},
-  {"id":"SdJAN42AZjs","title":"대(大)은사(恩師), 빤디따라마 큰스님(아신 빤디따비왐사)  짧은 법문(2016)","duration":"37:12","durationSec":2232,"category":"빤디따라마 큰스님(아신 빤디��� 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":114},
-  {"id":"Szzpo_SG-Co","title":"담마란 무엇인가, 어떤 것인가, 담마위하리(법으로 지내는 이)란 무엇인가? |  2025 빤디따라마 큰스님(아신 빤디따비왐사) 추모법회","duration":"42:34","durationSec":2554,"category":"빤디따라마 큰스님(아신 빤디��� 비왐사 사야도)","sortKey":20250416,"date":"2025-04-16","order":115},
+  {"id":"SdJAN42AZjs","title":"대(大)은사(恩師), 빤디따라마 큰스님(아신 빤디따비왐사)  짧은 법문(2016)","duration":"37:12","durationSec":2232,"category":"빤디따라마 큰스님(아신 빤디따 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":114},
+  {"id":"Szzpo_SG-Co","title":"담마란 무엇인가, 어떤 것인가, 담마위하리(법으로 지내는 이)란 무엇인가? |  2025 빤디따라마 큰스님(아신 빤디따비왐사) 추모법회","duration":"42:34","durationSec":2554,"category":"빤디따라마 큰스님(아신 빤디따 비왐사 사야도)","sortKey":20250416,"date":"2025-04-16","order":115},
   {"id":"T1yiC_p3Bb0","title":"[12연기] 8강 - 상카라빳짜야 윈냐낭 (3) | 빤디따라마 | 아야 마나삐까 | 2019.09.08","duration":"1:27:52","durationSec":5272,"category":"12연기","sortKey":20190008,"date":"2019-09-10","order":116},
   {"id":"THT2zBp37M8","title":"대념처경 (Mahāsatipatthāna·sutta 마하사띠빧타나숟따) 3강","duration":"57:22","durationSec":3442,"category":"대념처경","sortKey":20160003,"date":"2016-05-12","order":117},
   {"id":"TOi88XoLjs4","title":"[12연기] 4강 - 아윗자빳짜야 상카라 (3) | 빤디따라마 | 아야 마나삐까 | 2019.07.14","duration":"1:35:09","durationSec":5709,"category":"12연기","sortKey":20190004,"date":"2019-07-17","order":118},
@@ -387,7 +387,7 @@ const VIDEOS = [
   {"id":"o9Jcm_wDONs","title":"초전법륜경 (9) :  '마하담마사마다나숟따' 고귀한 법을 지키는 경과 중도수행, 칸따 상와라 인욕으로서 절제, 지킴  (Dhammacakkappavattana·sutta)","duration":"55:57","durationSec":3357,"category":"초전법륜경","sortKey":20160807,"date":"2016-08-07","order":215},
   {"id":"oBXeZvwTuTE","title":"낑다다숟따 (Kiṃdada sutta)","duration":"49:14","durationSec":2954,"category":"보시, 회향","sortKey":20160215,"date":"2016-02-15","order":216},
   {"id":"oJYc7FdQaJM","title":"마하사띠빧타나숟따 3강【 서론 】 사띠빧타나의 이익 (2) - 몸과 마음의 고통에서 벗어남, 도의 지혜와 열반을 얻음  | 빤디따라마 | 아야 마나삐까 | 2024.11.10","duration":"1:33:13","durationSec":5593,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20240003,"date":"2024-11-11","order":217},
-  {"id":"oSct0e6l_Kw","title":"빤디따라마 큰스님의 입적부터 다비식까지","duration":"11:08","durationSec":668,"category":"빤디따라마 큰스님(아신 빤디��� 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":218},
+  {"id":"oSct0e6l_Kw","title":"빤디따라마 큰스님의 입적부터 다비식까지","duration":"11:08","durationSec":668,"category":"빤디따라마 큰스님(아신 빤디따 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":218},
   {"id":"oyPS8LafzA0","title":"초전법륜경 (21) : 집성제 (2) '뽀노 바위까' 비구였다가 천인이 된 사마나 천인 이야기  (Dhammacakkappavattana·sutta)","duration":"1:14:17","durationSec":4457,"category":"초전법륜경","sortKey":20161004,"date":"2016-10-04","order":219},
   {"id":"p7l5WQfU6Is","title":"바와나숟따 (2)","duration":"57:06","durationSec":3426,"category":"바와나숟따","sortKey":20160216,"date":"2016-02-16","order":220},
   {"id":"pON3d_FazFs","title":"헤마와따숟따 (Hemavata·sutta) 5강","duration":"1:00:15","durationSec":3615,"category":"헤마와따경","sortKey":20170005,"date":"2017-10-02","order":221},
@@ -411,7 +411,7 @@ const VIDEOS = [
   {"id":"u6xN7OxnDL0","title":"2. 수행력(인드리야)을 강력하고 예리하게 만드는 9가지 요건 | 2026년 빤디따라마 유소년 위빳사나 집중수행 법문(2) | 빤디따라마 | 아야 마나삐까","duration":"1:01:06","durationSec":3666,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260331,"date":"2026-03-31","order":239},
   {"id":"uDAJKowMouo","title":"[2003-4] 신심의 계발과 법의 가치 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.05","duration":"32:14","durationSec":1934,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210623,"date":"2021-06-23","order":240},
   {"id":"uDo3lwprnIs","title":"무아인경 (2) : 색온이 무아인 모습 - 1 (Anattalakkhaṇa-sutta)","duration":"1:15:29","durationSec":4529,"category":"무아인경","sortKey":20180423,"date":"2018-04-23","order":241},
-  {"id":"uS7eqf1g9Is","title":"빤디따라마 큰스님(아신 빤디따비왐사)  추모 영상(2016)","duration":"9:26","durationSec":566,"category":"빤디따라마 큰스님(아신 빤디��� 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":242},
+  {"id":"uS7eqf1g9Is","title":"빤디따라마 큰스님(아신 빤디따비왐사)  추모 영상(2016)","duration":"9:26","durationSec":566,"category":"빤디따라마 큰스님(아신 빤디따 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":242},
   {"id":"uTRfQ6DsDn4","title":"초전법륜경 (27) (Dhammacakkappavattana·sutta)","duration":"1:11:19","durationSec":4279,"category":"초전법륜경","sortKey":20161023,"date":"2016-10-23","order":243},
   {"id":"ub6TuSziRAk","title":"[2003-7] 네 가지 상황의 지혜와 그 보조조건 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.08","duration":"33:38","durationSec":2018,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210811,"date":"2021-08-11","order":244},
   {"id":"uhH8yPNMVZ0","title":"[2003-3] 네 가지 신심(saddhā) | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.04","duration":"28:11","durationSec":1691,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210611,"date":"2021-06-11","order":245},
@@ -459,12 +459,17 @@ const VIDEOS = [
   {"id":"VnXU-R9fAL4","title":"[위빳사나 기본다지기] (4일차 1교시) 삼배 및 일상관찰 보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.07","duration":"42:05","durationSec":2525,"category":"사띠빧타나 수행 입문","sortKey":20260825,"date":"2026-08-25","order":287},
   {"id":"yI5CRTXT7UU","title":"자애, 수행에 선행해야 하는 법(자애경) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260731","duration":"1:03:24","durationSec":3804,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":288},
   {"id":"r4yQLEFtmcE","title":"자애의 이익(자애경) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260730","duration":"49:38","durationSec":2978,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":289},
-  {"id":"RglgRkkwR1g","title":"붇다의 가르침(불법) | 빤디따라마 유소년 위빳사나 집중수행 입재법문 | 아야 마나삐까 | 20260729","duration":"53:23","durationSec":3203,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":290},
+  {"id":"RglgRkkwR1g","title":"붇다의 가르침(불법) | 빤디따라마 유소년 위빳사나 집중수행 입재법문 | 아야 마��삐까 | 20260729","duration":"53:23","durationSec":3203,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":290},
   {"id":"vRZwQVZXHKY","title":"자애관 방법(자애경)- 뒷부분 없음(아이폰촬영) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260801","duration":"1:08:02","durationSec":4082,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":291},
   {"id":"-Vrhk9EGJb8","title":"자애관 방법(자애경) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260801","duration":"58:00","durationSec":3480,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260826,"date":"2026-08-26","order":292},
   {"id":"nCU5MnDrHfg","title":"마하사띠빧타나숟따 17강【 닛데사와라 】까야누빳싸나 (11) - 성분의 성품으로 마음에 두는 방법의 장 (1) | 빤디따라마 | 아야 마나삐까 | 2026.08.22","duration":"1:54:48","durationSec":6888,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260017,"date":"2026-08-31","order":293},
   {"id":"fIya7_myOWk","title":"[위빳사나 기본다지기] (4일차 2~3교시) 경행지도 및 좌선,경행,삼배 관찰보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.07","duration":"1:02:08","durationSec":3728,"category":"사띠빧타나 수행 입문","sortKey":20260831,"date":"2026-08-31","order":294},
   {"id":"j6Te7o12yjU","title":"마하사띠빧타나숟따 18강【 닛데사와라 】까야누빳싸나 (12) - 성분의 성품으로 마음에 두는 방법의 장 (2) | 빤디따라마 | 아야 마나삐까 | 2026.09.12.","duration":"1:31:55","durationSec":5515,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260018,"date":"2026-09-15","order":295},
   {"id":"7QpXhvp2rEs","title":"마하사띠빧타나숟따 19강【 닛데사와라 】까야누빳싸나 (13) - 성분의 성품으로 마음에 두는 방법의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2026.09.27.","duration":"1:33:24","durationSec":5604,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260019,"date":"2026-09-29","order":296},
-  {"id":"eRtY5kLwrc0","title":"영상 37조도품 법문1 20261003","duration":"56:15","durationSec":3375,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":297}
+  {"id":"eRtY5kLwrc0","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 수행의 바탕이 되는 정견과 계율 | 사띠빧타나 집중수행 법문(1) | 빤디따라마 | 아야 마나삐까 | 20261003","duration":"56:15","durationSec":3375,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":297},
+  {"id":"kEVxual9T7Y","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 네 가지 청정한 계율과 마라의 군대 10가지 | 빤디따라마 | 아야 마나삐까 |  20261004","duration":"59:38","durationSec":3578,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":298},
+  {"id":"8-X29MaD3wk","title":"영상 10월 5일 편집","duration":"1:07:32","durationSec":4052,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":299},
+  {"id":"i5f_JxVnTd8","title":"영상 10월 7일","duration":"56:08","durationSec":3368,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":300},
+  {"id":"8MJht_J9nEo","title":"영상 10월 8일","duration":"1:10:45","durationSec":4245,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":301},
+  {"id":"Zaj4pgjPK6g","title":"영상 10월 9일","duration":"1:16:31","durationSec":4591,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":302}
 ]
