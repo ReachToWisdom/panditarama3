@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 303개 영상, 28개 카테고리
-// 생성일: 2026-10-17
+// 총 304개 영상, 28개 카테고리
+// 생성일: 2026-10-23
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -409,7 +409,7 @@ const VIDEOS = [
   {"id":"tazhjkaBK3A","title":"초전법륜경 (13) : 팔정도 (2) 출가자의 생계유지, 삼마와야마 막강가 (Dhammacakkappavattana·sutta)","duration":"58:59","durationSec":3539,"category":"초전법륜경","sortKey":20160815,"date":"2016-08-15","order":237},
   {"id":"tpYOYlM8gbI","title":"[2003-5] 신심의 특성, 기능, 상황, 근접원인 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.06","duration":"28:33","durationSec":1713,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210623,"date":"2021-06-23","order":238},
   {"id":"u6xN7OxnDL0","title":"2. 수행력(인드리야)을 강력하고 예리하게 만드는 9가지 요건 | 2026년 빤디따라마 유소년 위빳사나 집중수행 법문(2) | 빤디따라마 | 아야 마나삐까","duration":"1:01:06","durationSec":3666,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260331,"date":"2026-03-31","order":239},
-  {"id":"uDAJKowMouo","title":"[2003-4] 신심의 계발과 법의 가치 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사) | 2003.12.05","duration":"32:14","durationSec":1934,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210623,"date":"2021-06-23","order":240},
+  {"id":"uDAJKowMouo","title":"[2003-4] 신심의 계발과 법의 가치 | 미얀마 집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비���사) | 2003.12.05","duration":"32:14","durationSec":1934,"category":"집중수행 법문 | 빤디따라마 큰스님(아신 빤디따비왐사)","sortKey":20210623,"date":"2021-06-23","order":240},
   {"id":"uDo3lwprnIs","title":"무아인경 (2) : 색온이 무아인 모습 - 1 (Anattalakkhaṇa-sutta)","duration":"1:15:29","durationSec":4529,"category":"무아인경","sortKey":20180423,"date":"2018-04-23","order":241},
   {"id":"uS7eqf1g9Is","title":"빤디따라마 큰스님(아신 빤디따비왐사)  추모 영상(2016)","duration":"9:26","durationSec":566,"category":"빤디따라마 큰스님(아신 빤디따 비왐사 사야도)","sortKey":20160516,"date":"2016-05-16","order":242},
   {"id":"uTRfQ6DsDn4","title":"초전법륜경 (27) (Dhammacakkappavattana·sutta)","duration":"1:11:19","durationSec":4279,"category":"초전법륜경","sortKey":20161023,"date":"2016-10-23","order":243},
@@ -459,7 +459,7 @@ const VIDEOS = [
   {"id":"VnXU-R9fAL4","title":"[위빳사나 기본다지기] (4일차 1교시) 삼배 및 일상관찰 보고 | 빤디따라마 | 아야 마나삐까 | 2025.08.07","duration":"42:05","durationSec":2525,"category":"사띠빧타나 수행 입문","sortKey":20260825,"date":"2026-08-25","order":287},
   {"id":"yI5CRTXT7UU","title":"자애, 수행에 선행해야 하는 법(자애경) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260731","duration":"1:03:24","durationSec":3804,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":288},
   {"id":"r4yQLEFtmcE","title":"자애의 이익(자애경) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260730","duration":"49:38","durationSec":2978,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":289},
-  {"id":"RglgRkkwR1g","title":"붇다의 가르침(불법) | 빤디따라마 유소년 위빳사나 집중수행 입재법문 | 아야 마��삐까 | 20260729","duration":"53:23","durationSec":3203,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":290},
+  {"id":"RglgRkkwR1g","title":"붇다의 가르침(불법) | 빤디따라마 유소년 위빳사나 집중수행 입재법문 | 아야 마나삐까 | 20260729","duration":"53:23","durationSec":3203,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":290},
   {"id":"vRZwQVZXHKY","title":"자애관 방법(자애경)- 뒷부분 없음(아이폰촬영) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260801","duration":"1:08:02","durationSec":4082,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260825,"date":"2026-08-25","order":291},
   {"id":"-Vrhk9EGJb8","title":"자애관 방법(자애경) | 빤디따라마 유소년 위빳사나 집중수행 법문 | 아야 마나삐까 | 20260801","duration":"58:00","durationSec":3480,"category":"빤디따라마 유소년 위빳사나 불교학교","sortKey":20260826,"date":"2026-08-26","order":292},
   {"id":"nCU5MnDrHfg","title":"마하사띠빧타나숟따 17강【 닛데사와라 】까야누빳싸나 (11) - 성분의 성품으로 마음에 두는 방법의 장 (1) | 빤디따라마 | 아야 마나삐까 | 2026.08.22","duration":"1:54:48","durationSec":6888,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260017,"date":"2026-08-31","order":293},
@@ -467,9 +467,10 @@ const VIDEOS = [
   {"id":"j6Te7o12yjU","title":"마하사띠빧타나숟따 18강【 닛데사와라 】까야누빳싸나 (12) - 성분의 성품으로 마음에 두는 방법의 장 (2) | 빤디따라마 | 아야 마나삐까 | 2026.09.12.","duration":"1:31:55","durationSec":5515,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260018,"date":"2026-09-15","order":295},
   {"id":"7QpXhvp2rEs","title":"마하사띠빧타나숟따 19강【 닛데사와라 】까야누빳싸나 (13) - 성분의 성품으로 마음에 두는 방법의 장 (3) | 빤디따라마 | 아야 마나삐까 | 2026.09.27.","duration":"1:33:24","durationSec":5604,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260019,"date":"2026-09-29","order":296},
   {"id":"eRtY5kLwrc0","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 수행의 바탕이 되는 정견과 계율 | 사띠빧타나 집중수행 법문(1) | 빤디따라마 | 아야 마나삐까 | 20261003","duration":"56:15","durationSec":3375,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":297},
-  {"id":"kEVxual9T7Y","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 네 가지 청정한 계율과 마라의 군대 10가지 | 빤디따라마 | 아야 마나삐까 |  20261004","duration":"59:38","durationSec":3578,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":298},
-  {"id":"8-X29MaD3wk","title":"영상 10월 5일 편집","duration":"1:07:32","durationSec":4052,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":299},
+  {"id":"kEVxual9T7Y","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 네 가지 청정한 계율과 마라의 열 가지 군대 | 사띠빧타나 집중수행 법문(2) | 아야 마나삐까 |  20261004","duration":"59:38","durationSec":3578,"category":"37조도품","sortKey":20261017,"date":"2026-10-17","order":298},
+  {"id":"8-X29MaD3wk","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 네 가지(신·수·심·법) 확고한 사띠와 네 가지 왜곡 | 사띠빧타나 집중수행 법문(3) | 아야 마나삐까 | 20261005","duration":"1:07:32","durationSec":4052,"category":"37조도품","sortKey":20261019,"date":"2026-10-19","order":299},
   {"id":"i5f_JxVnTd8","title":"영상 10월 7일","duration":"56:08","durationSec":3368,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":300},
   {"id":"8MJht_J9nEo","title":"영상 10월 8일","duration":"1:10:45","durationSec":4245,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":301},
-  {"id":"Zaj4pgjPK6g","title":"영상 10월 9일","duration":"1:16:31","durationSec":4591,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":302}
+  {"id":"Zaj4pgjPK6g","title":"영상 10월 9일","duration":"1:16:31","durationSec":4591,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":302},
+  {"id":"adzgN6AbX9U","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 네 가지 바른 정근(4가지 기능을 수행하는 바른 노력) | 사띠빧타나 집중수행 법문(4) | 아야 마나삐까 | 20261006","duration":"59:54","durationSec":3594,"category":"37조도품","sortKey":20261022,"date":"2026-10-22","order":303}
 ]
