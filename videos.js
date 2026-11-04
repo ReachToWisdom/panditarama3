@@ -1,6 +1,6 @@
 // 빤디따라마 영상 데이터 (자동 생성)
-// 총 305개 영상, 28개 카테고리
-// 생성일: 2026-10-27
+// 총 306개 영상, 28개 카테고리
+// 생성일: 2026-11-04
 // 정렬: 제목의 강 번호 기준 (없으면 날짜순)
 
 // 기본 카테고리 (영상 수 기준)
@@ -349,7 +349,7 @@ const VIDEOS = [
   {"id":"ffz_wFeQoJE","title":"실라완따 숟따  Sīlavanta·sutta  (계행있는 이의 경) 9강","duration":"59:56","durationSec":3596,"category":"실라완따숟따","sortKey":20160009,"date":"2016-11-05","order":177},
   {"id":"gJUuIhVgMmg","title":"실라완따 숟따 Sīlavanta·sutta  (계행있는 이의 경) 16강 | 바와나 디빠니 Bhāvanā dīpanī  19강","duration":"1:08:42","durationSec":4122,"category":"실라완따숟따","sortKey":20160016,"date":"2016-11-13","order":178},
   {"id":"gKncV5GYhrE","title":"무아인경 (19) : 느낌, 지각을 11가지로 관하는 모습 (Anattalakkhaṇa-sutta)","duration":"1:57:37","durationSec":7057,"category":"무아인경","sortKey":20181016,"date":"2018-10-16","order":179},
-  {"id":"gVMFMidoivU","title":"마하사띠빧타나숟따 13강【 닛데사와라 】 까야누빳싸나 (7) - 삼빠자나의 장 (2) | 빤디따라마 | 아야 마나삐까 | 2025.10.12","duration":"1:33:22","durationSec":5602,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20250013,"date":"2025-10-31","order":180},
+  {"id":"gVMFMidoivU","title":"마하사띠빧타나숟따 13강【 닛데사와라 】 까야��빳싸나 (7) - 삼빠자나의 장 (2) | 빤디따라마 | 아야 마나삐까 | 2025.10.12","duration":"1:33:22","durationSec":5602,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20250013,"date":"2025-10-31","order":180},
   {"id":"ghzWdNAiJTI","title":"헤마와따숟따 (Hemavata·sutta) 3강","duration":"1:31:40","durationSec":5500,"category":"헤마와따경","sortKey":20170003,"date":"2017-10-01","order":181},
   {"id":"gi4kfPJV2Is","title":"헤마와따숟따 (Hemavata·sutta) 2강","duration":"1:15:26","durationSec":4526,"category":"헤마와따경","sortKey":20170002,"date":"2017-09-13","order":182},
   {"id":"gzXd2-5T5iI","title":"[12연기] 6강 - 상카라빳짜야 윈냐낭 (1) | 빤디따라마 | 아야 마나삐까 | 2019.08.11","duration":"1:38:56","durationSec":5936,"category":"12연기","sortKey":20190006,"date":"2019-08-19","order":183},
@@ -470,8 +470,9 @@ const VIDEOS = [
   {"id":"8-X29MaD3wk","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 1. 네 가지(신·수·심·법) 확고한 사띠와 네 가지 왜곡 | 사띠빧타나 집중수행 법문(3) | 아야 마나삐까 | 20261005","duration":"1:07:32","durationSec":4052,"category":"37조도품","sortKey":20261019,"date":"2026-10-19","order":298},
   {"id":"i5f_JxVnTd8","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 3. 네 가지 성취의 조건 | 사띠빧타나 집중수행 법문(5) | 아야 마나삐까 | 20261007","duration":"56:08","durationSec":3368,"category":"37조도품","sortKey":20261025,"date":"2026-10-25","order":299},
   {"id":"8MJht_J9nEo","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 4. 다섯 가지 통제 능력 5. 다섯 가지 힘 | 사띠빧타나 집중수행 법문(6) | 아야 마나삐까 | 20261008","duration":"1:10:45","durationSec":4245,"category":"37조도품","sortKey":20261026,"date":"2026-10-26","order":300},
-  {"id":"Zaj4pgjPK6g","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 6. 7가지 깨달음의 요인(1~4번까지)  | 사띠빧타나 집중수행 법문(7) | 아야 마나삐까 | 20261009","duration":"1:16:31","durationSec":4591,"category":"37조도품","sortKey":20261016,"date":"2026-10-16","order":301},
+  {"id":"Zaj4pgjPK6g","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 6. 칠각지(7가지 깨달음의 요인)  | 사띠빧타나 집중수행 법문(7) | 아야 마나삐까 | 20261009","duration":"1:16:31","durationSec":4591,"category":"37조도품","sortKey":20261027,"date":"2026-10-27","order":301},
   {"id":"adzgN6AbX9U","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 2.네 가지 바른 정근(4가지 기능을 수행하는 바른 노력) | 사띠빧타나 집중수행 법문(4) | 아야 마나삐까 | 20261006","duration":"59:54","durationSec":3594,"category":"37조도품","sortKey":20261022,"date":"2026-10-22","order":302},
-  {"id":"O6smFbOGm2A","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 6. 7가지 깨달음의 요인(5~7) 7. 팔정도 | 사띠빧타나 집중수행 법문(8) | 아야 마나삐까 | 20261010","duration":"1:12:20","durationSec":4340,"category":"37조도품","sortKey":20261026,"date":"2026-10-26","order":303},
-  {"id":"Pd5MbupLI5I","title":"영상 회향","duration":"13:12","durationSec":792,"category":"37조도품","sortKey":20261026,"date":"2026-10-26","order":304}
+  {"id":"O6smFbOGm2A","title":"37가지 깨달음의 편에 있는 성품(37조도품) | 6.칠각지 7.팔정도  | 사띠빧타나 집중수행 법문(8) | 아야 마나삐까 | 20261010","duration":"1:12:20","durationSec":4340,"category":"37조도품","sortKey":20261027,"date":"2026-10-27","order":303},
+  {"id":"Pd5MbupLI5I","title":"자눗소니 바라문 경(Jāṇussoṇi Brāhmaṇa Sutta)  | 사띠빧타나 집중수행 회향 법문(9) | 아야 마나삐까 | 20261011","duration":"13:12","durationSec":792,"category":"37조도품","sortKey":20261027,"date":"2026-10-27","order":304},
+  {"id":"sK2E1Xwt9uk","title":"마하사띠빧타나숟따 20강【 닛데사와라 】까야누빳싸나 (14) - 성분의 성품으로 마음에 두는 방법의 장 (4) | 빤디따라마 | 아야 마나삐까 | 2026.10.25.","duration":"1:26:18","durationSec":5178,"category":"마하사띠빧타나숟따(대념처경)","sortKey":20260020,"date":"2026-11-03","order":305}
 ]
